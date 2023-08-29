@@ -1,32 +1,23 @@
-import './App.css';
-/*import Login from './login';*/
-/*import AdminPanel from './admin';*/
+import './App.css'
+import MyButton from './MyButton';
+import Login from './LoginForm';
 
+export default function MyApp() {
 
-function App() {
-  let isLoggedIn;
   let content;
-  isLoggedIn = false;
+  let isLoggedIn;
+  isLoggedIn = true;
 
   if (isLoggedIn) {
-    content = <AdminPanel />;
+    content = <Login />
   } else {
-    content = <Login />;
+    content = <MyButton />
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-       
-        <h1>react intro</h1>
-          <input></input>
-          <input></input>
-          <button onClick={Login}>Login</button>
-          {content}
-
-      </header>
+    <div>
+      <h1>Welcome to my app</h1>
+      {content}
     </div>
   );
 }
-
-export default App;
