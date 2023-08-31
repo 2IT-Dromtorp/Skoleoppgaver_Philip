@@ -1,17 +1,17 @@
 import './App.css'
 import MyButton from './MyButton';
-import Login from './LoginForm';
+import Login from './Login';
 
 export default function MyApp() {
 
   let content;
   let isLoggedIn;
-  isLoggedIn = true;
+  isLoggedIn = false;
 
   if (isLoggedIn) {
-    content = <Login />
-  } else {
     content = <MyButton />
+  } else {
+    content = <Login />
   }
 
   return (

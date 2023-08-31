@@ -1,5 +1,5 @@
 function HelloWorld() {
-    alert('Hello World');
+   prompt('Test');
 }
 
 export default function MyButton() {

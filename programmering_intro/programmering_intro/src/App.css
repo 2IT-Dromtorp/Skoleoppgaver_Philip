@@ -1,0 +1,35 @@
+body {
+  background-color: #ff8d0a;
+}
+
+.main {
+  border: solid 1px red;
+}
+
+.titlebar {
+  background-color: #32344f;
+  color: #fff;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  border-bottom: solid 2px #000;
+}
+
+span {
+  font-size: 1.5em;
+}
+
+.oppgave {
+  background-color: #fff;
+  /*border: solid 1px green;*/
+  width: 60%;
+  margin: auto;
+  box-shadow: 0 5px 50px 0 #000;
+  padding: 2px;
+}
+
+p {
+  color: #000;
+  margin: 3px;
+}
