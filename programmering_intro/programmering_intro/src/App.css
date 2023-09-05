@@ -1,5 +1,5 @@
 body {
-  background-color: #ff8d0a;
+  background-color: #000;
 }
 
 .main {
@@ -21,15 +21,14 @@ span {
 }
 
 .oppgave {
-  background-color: #fff;
-  /*border: solid 1px green;*/
+  background-color: #161616;
+  border: solid 1px #fff;
   width: 60%;
   margin: auto;
-  box-shadow: 0 5px 50px 0 #000;
   padding: 2px;
 }
 
 p {
-  color: #000;
+  color: #fff;
   margin: 3px;
 }
