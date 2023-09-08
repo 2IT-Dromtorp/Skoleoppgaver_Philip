@@ -33,6 +33,15 @@ function Oppgave2({lengde, bredde}) {
 
   const trekantAreal = lengde * bredde / 2;
 
+  function ArealKalkulator() {
+    let rektangelResult = LengdeValue * BreddeValue;
+    let trekantResult = LengdeValue * BreddeValue / 2;
+    const [LengdeValue, setLengdeValue] = useState('');
+    const [BreddeValue, setBreddeValue] = useState('');
+    const [Rektangel, setRektangel] = useState('');
+    const [Trekant, setTrekant] = useState('');
+  }
+
   return (
   <div class="oppgave">
     <p>Oppgave 2</p>
@@ -40,19 +49,52 @@ function Oppgave2({lengde, bredde}) {
     <p>2 A) Arealet til rektanglet er {rektangelAreal}m²</p>
     <p>2 B) Arealet til trekanten er {trekantAreal}m²</p>
     <p>2 C) </p>
+    <input type='text'></input>
+    <input type='text'></input>
+    <p className='rektangelResult'></p>
+    <p className='trekantResult'></p>
   </div>
   )
 }
 
-function Oppgave3 () {
+function Oppgave3() {
+  const [inputValue, setInputValue] = useState('');
+  const [result, setResult] = useState('');
+
+  const handleLangVerificatorClick = () => {
+    const input = inputValue.toUpperCase();
+
+    if (input === 'N') {
+      setResult('Du er Norsk');
+    } else if (input === 'S') {
+      setResult('Du er Svensk');
+    } else {
+      setResult('Feil input');
+    }
+  };
+
+  function fjernInput() {
+    setInputValue('');
+    setResult('');
+  };
+
   return (
-  <div class="oppgave">
-    <p>Oppgave 3</p>
-    <br></br>
-    <p>3 A)</p>
-    <p>3 B) </p>
-  </div>
-  )
+    <div className="oppgave">
+      <p>Oppgave 3</p>
+      <br />
+      <p>3 A) Skriv "N" om du er norsk, "S" hvis du er svensk.</p>
+      <input
+        type='text'
+        placeholder='skriv her'
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <button onClick={handleLangVerificatorClick}>Submit</button>
+      <p className='sprak'>{result}</p>
+      <button onClick={fjernInput}>Fjern Input</button>
+      <p>3 B)</p>
+    </div>
+  );
 }
 
 function Oppgave4 () {

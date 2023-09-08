@@ -1,3 +1,34 @@
-html {
-  background-color: aqua;
+body {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #fff;
+}
+
+.DigitalClock {
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  background-color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 3rem;
+}
+
+.ButtonUp {
+  background-color: transparent;
+  border: none;
+}
+
+.ButtonDown {
+  background-color: transparent;
+  border: none;
+}
+
+.number {
+  text-align: center;
 }
