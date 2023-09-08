@@ -68,6 +68,8 @@ function Oppgave3() {
       setResult('Du er Norsk');
     } else if (input === 'S') {
       setResult('Du er Svensk');
+    } else if (input === 'D') {
+      setResult('Du er Dansk');
     } else {
       setResult('Feil input');
     }
@@ -82,7 +84,7 @@ function Oppgave3() {
     <div className="oppgave">
       <p>Oppgave 3</p>
       <br />
-      <p>3 A) Skriv "N" om du er norsk, "S" hvis du er svensk.</p>
+      <p>3 A) Skriv "N" om du er norsk, "S" hvis du er svensk og "D" hvis du er dansk.</p>
       <input
         type='text'
         placeholder='skriv her'
