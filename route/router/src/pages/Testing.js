@@ -1,6 +1,6 @@
 export function Testing() {
     return (
-        <div>
+        <div className="main">
             <h1>Testing</h1>
         </div>
     )
