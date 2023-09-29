@@ -4,6 +4,60 @@ p {color: #fff;}
 
 .main {
   margin-left: 80px;
+  height: fit-content;
+}
+
+.profile-main {
+  margin-left: 80px;
+  height: fit-content;
+}
+
+.testing-main {
+  margin-left: 80px;
+  height: fit-content;
+}
+
+.klassekart-main {
+  margin-left: 80px;
+  display: flex;
+  height: fit-content;
+}
+
+.klassekart-main .leftwrapper {
+  margin-left: .25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+}
+
+.klassekart-main .rightwrapper {
+  margin-right: .25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+}
+
+.klassekart-main .row {
+  display: flex;
+}
+
+.klassekart-main .elev {
+  padding: 1em;
+  width: 50px;
+  margin: .5em .1em .5em .1em;
+  border: solid 1px #000;
+  font-size: 1em;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.oppg-main {
+  margin-left: 80px;
+  height: fit-content;
 }
 
 img {
@@ -30,6 +84,10 @@ img {
   background-color: #24223c;
   padding: 5px 0 5px 0;
   border-top: solid 1px #fff;
+}
+
+.footerbox {
+  margin-left: 80px;
 }
 
 .navbar a {
