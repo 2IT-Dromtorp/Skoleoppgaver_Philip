@@ -1,0 +1,323 @@
+/*Layout styling*/
+
+body.dark-mode #navbar {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    position: sticky;
+    top: 0;
+    height: 8vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-bottom: solid 1px #FFF;
+  }
+  
+  /*Navbar content styling*/
+  
+  #navbar img {
+    margin: 0 10px;
+    height: 6vh;
+  }
+  
+  #profile-container {
+    display: flex;
+    margin: 0 10px;
+  }
+  
+  body.dark-mode #goToLogin {
+    margin: 0 0 0 10px;
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  #goToLogin:hover {
+    text-decoration: underline;
+  }
+
+  #themeBtn {
+    background-color: #FFF;
+    border: none;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  /*Outlet styling*/
+  
+  body.dark-mode #outlet {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    background-color: #1D1D1D;
+  }
+  
+  /*Outlet content styling*/
+  
+  #header-container {
+    align-items: center;
+    padding: 50px 0 30px;
+    flex-direction: column;
+    display: flex;
+  }
+  
+  #header {
+    text-align: center;
+  }
+  
+  #sub-header {
+    margin: 20px 10px 30px;
+    width: 60vw;
+    text-align: center;
+  }
+  
+  body.dark-mode #image {
+    height: 50vh;
+    background-color: #000;
+  }
+  
+  #kurs {
+    padding: 50px 0 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #kurs-infoheader {
+    padding: 0 0 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #kurs-infocontainer {
+    width: 92vw;
+    background-color: #1D1D1D;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  body.dark-mode #kurs-box {
+    width: 250px;
+    height: fit-content;
+    background-color: #FFF;
+    cursor: pointer;
+    border-radius: 20px;
+    color: #1D1D1D;
+  }
+  
+  #kurs-box:hover {
+    transform: scale(1.05);
+    transition: transform .3s ease-in-out;
+  }
+  
+  #kurs-box img {
+    width: 245px;
+    border-radius: 20px;
+  }
+  
+  #kurs-box h2 {
+    text-align: center;
+  }
+  
+  #img-container {
+    padding: 2.5px 0 0;
+    display: flex;
+    width: 250px;
+    justify-content: center;
+  }
+  
+  /*Kursside styling*/
+  
+  #kurs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #blue {
+    padding: 12px;
+    background-color: #61BAC2;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    color: #FFF;
+  }
+  
+  #blue:hover {
+    background-color: #446084;
+    transition: .3s ease ease-in-out;
+  }
+  
+  #red {
+    padding: 12px;
+    background-color: #E30000;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    color: #FFF;
+  }
+  
+  #red:hover {
+    background-color: #8F0000;
+    transition: .3s ease-in-out;
+  }
+  
+  #grey {
+    padding: 12px;
+    background-color: gray;
+    border: none;
+    cursor: not-allowed;
+    border-radius: 12px;
+    color: #FFF;
+  }
+  
+  #kurspage-information-container {
+    justify-content: space-between;
+    width: 70vw;
+    padding: 50px 0 20px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  #kursinfo-box {
+    width: 250px;
+    height: fit-content;
+  }
+  
+  #kursinfo-box h2 {
+    /* text-align: center; */
+    margin: 0 0 10px;
+  }
+  
+  /*Footer styling*/
+  
+  #footer {
+    display: flex;
+    height: fit-content;
+    background-color: #000;
+  }
+  
+  /*Footer content styling*/
+  
+  #footer-infocontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 180px 40px;
+    width: 100%;
+  }
+  
+  #footer-box {
+    width: 180px;
+    color: #FFF;
+  }
+  
+  #footer-box img {
+    scale: 0.75;
+  }
+  
+  /*Botnav styling*/
+  
+  body.dark-mode #botnav {
+    align-self: flex-end;
+    display: flex;
+    position: sticky;
+    top: auto;
+    bottom: 0;
+    align-items: center;
+    justify-content: space-between;
+    height: 5vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-top: solid 1px #FFF;
+  }
+  
+  /*Botnav content styling*/
+  
+  #botnav button {
+    margin: 0 10px;
+  }
+  
+  /*Login & registration styling*/
+  
+  #form-container {
+    padding: 50px 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  body.dark-mode #form {
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #FFF;
+    width: 30vw;
+  }
+  
+  #form input {
+    padding: 8px;
+    border-radius: 8px;
+    border: solid 1px #1D1D1D;
+    margin: 5px 0 5px;
+  }
+  
+  #form input:focus {
+    margin: 5px 0 5px;
+    outline: none;
+  }
+  
+  #form button {
+    background-color: #61BAC2;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  #form button:hover {
+    background-color: #446084;
+    transition: .3s ease-in-out;
+  }
+  
+  /*General styling*/
+  
+  /* Define the font-face for SF Pro Display Regular */
+  @font-face {
+    font-family: 'SFProDisplay';
+    src: url('./fonts/SF-Pro-Display-Regular.otf') format('opentype');
+    font-weight: normal;
+  }
+  
+  /* Define the font-face for SF Pro Display Bold */
+  @font-face {
+    font-family: 'SFProDisplay';
+    src: url('./fonts/SF-Pro-Display-Regular.otf') format('opentype');
+    font-weight: bold;
+  }
+  
+  /* Apply the font to the body or specific elements */
+  body.dark-mode  {
+    font-family: 'SFProDisplay', sans-serif;
+    color: #FFF;
+    background-color: #000;
+  }
+  
+  h1 {
+    font-size: 4em;
+    margin: 0;
+  }
+  
+  h2 {
+    margin: 0;
+  }
+  
+  p {
+    margin: 0;
+  }
