@@ -5,12 +5,12 @@ import './LightMode.css';
 import './DarkMode.css';
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
-// import Login from "./pages/Login";
-// import Register from "./pages/Register";
-// import Datakunnskap from "./pages/Datakunnskap";
-// import Kroppsoving from "./pages/Kroppsoving";
-// import Norsk from "./pages/Norsk";
-// import Heimkunnskap from "./pages/Heimkunnskap";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Datakunnskap from "./pages/Datakunnskap";
+import Kroppsoving from "./pages/Kroppsoving";
+import Norsk from "./pages/Norsk";
+import Heimkunnskap from "./pages/Heimkunnskap";
 
 function App() {
   // State for login status and email
@@ -18,21 +18,15 @@ function App() {
   const [email, setEmail] = useState('');
 
   // Effect to check and set login status from localStorage
-  // useEffect(() => {
-  //   const storedLoggedIn = localStorage.getItem('loggedIn');
-  //   const storedEmail = localStorage.getItem('email');
+  useEffect(() => {
+    const storedLoggedIn = localStorage.getItem('loggedIn');
+    const storedEmail = localStorage.getItem('email');
 
-  //   if (storedLoggedIn && storedEmail) {
-  //     setLoggedIn(JSON.parse(storedLoggedIn));
-  //     setEmail(storedEmail);
-  //   }
-  // }, []);
-
-  // // Effect to update localStorage when login status or email changes
-  // useEffect(() => {
-  //   localStorage.setItem('loggedIn', JSON.stringify(loggedIn));
-  //   localStorage.setItem('email', email);
-  // }, [loggedIn, email]);
+    if (storedLoggedIn && storedEmail) {
+      setLoggedIn(JSON.parse(storedLoggedIn));
+      setEmail(storedEmail);
+    }
+  }, []);
 
   return (
     <div className="App">
@@ -41,12 +35,12 @@ function App() {
           <Route path="/" element={<Layout email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />}>
             <Route index element={<Home email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
             <Route path="home" element={<Home email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
-            {/* <Route path="login" element={<Login email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
+            <Route path="login" element={<Login email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
             <Route path="register" element={<Register email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
             <Route path="datakunnskap" element={<Datakunnskap email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
             <Route path="kroppsoving" element={<Kroppsoving email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
             <Route path="norsk" element={<Norsk email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
-            <Route path="heimkunnskap" element={<Heimkunnskap email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} /> */}
+            <Route path="heimkunnskap" element={<Heimkunnskap email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
           </Route>
         </Routes>
       </BrowserRouter>
