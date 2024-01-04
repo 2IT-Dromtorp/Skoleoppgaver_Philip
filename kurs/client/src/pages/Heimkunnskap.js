@@ -1,117 +1,113 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
 
 function Heimkunnskap(props) {
-  const { loggedIn, email } = props;
+    const { loggedIn, email } = props;
 
-  const COURSE_ID = 'HEIMKUNNSKAP';
-  const localStorageKey = 'heimkunnskapIsRegistered';
+    const COURSE_ID = 'HEIMKUNNSKAP';
 
-  const [isRegistered, setIsRegistered] = useState(
-    localStorage.getItem(localStorageKey) === 'true'
-  );
+    const [isRegistered, setIsRegistered] = useState(false);
 
-  let btnId = '';
-  let btnText = 'Meld deg på';
+    let btnId = '';
+    let btnText = 'Meld deg på';
 
-  if (loggedIn && isRegistered) {
-    btnText = 'Meld deg av';
-  }
-
-  if (isRegistered) {
-    btnId = 'red';
-  } else {
-    btnId = 'blue';
-  }
-
-  if (!loggedIn) {
-    btnId = 'grey';
-  }
-
-  const is_registered = () => {
-    const body = {
-      email: email,
-      course_id: COURSE_ID,
-    };
-
-    fetch('/api/is_registered', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data.status === 'S') {
-          setIsRegistered(data.is_registered);
-          localStorage.setItem(localStorageKey, data.is_registered);
-        } else {
-          console.error(data.message);
-        }
-      })
-      .catch((error) => console.error(error));
-  };
-
-  const doSignUp = () => {
-    if (!loggedIn) {
-      return;
+    if (loggedIn && isRegistered) {
+        btnText = 'Meld deg av';
     }
 
-    const endpoint = isRegistered ? '/api/unregister' : '/api/register';
+    if (isRegistered) {
+        btnId = 'red';
+    } else {
+        btnId = 'blue';
+    }
 
-    const body = {
-      email: email,
-      course_id: COURSE_ID,
+    if (!loggedIn) {
+        btnId = 'grey';
+    }
+
+    const is_registered = () => {
+        console.log("is_registered?");
+
+        const body = {
+            email: email,
+            course_id: COURSE_ID,
+        };
+
+        fetch('/api/is_registered', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                if (data.status === 'S') {
+                    setIsRegistered(data.is_registered);
+                    // localStorage.setItem(localStorageKey, data.is_registered);                    
+                }
+            })
+            .catch((error) => console.error(error));
     };
 
-    fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === 'S') {
-          setIsRegistered(!isRegistered);
-          localStorage.setItem(localStorageKey, !isRegistered);
-          toast.success(data.message);
-        } else {
-          console.error(data.message);
+    const doSignUp = () => {
+        if (!loggedIn) {
+            return;
         }
-      })
-      .catch((error) => console.error(error));
-  };
 
-  const navigate = useNavigate();
+        const endpoint = isRegistered ? '/api/unregister' : '/api/register';
 
-  useEffect(() => {
+        const body = {
+            email: email,
+            course_id: COURSE_ID,
+        };
+
+        fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status === 'S') {
+                    setIsRegistered(!isRegistered);
+                    // localStorage.setItem(localStorageKey, !isRegistered);
+                    toast.success(data.message);
+                } else {
+                    console.error(data.message);
+                    toast.error(data.message);
+                }
+            })
+            .catch((error) => console.error(error));
+    };
+
+    useNavigate();
+
     is_registered();
-  }, [email, loggedIn]); // Updated the dependency array to include email and loggedIn
 
-  return (
-    <>
-      <div id="kurs-container">
-        <div id="kurs-header">
-          <h1>Heimkunnskap</h1>
-        </div>
-        <div id="sub-header">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a
-            mattis ipsum. Nullam eu felis odio. Etiam tempus felis ac
-            condimentum ultrices.
-          </p>
-        </div>
-        <div id="button-container">
-          <button onClick={doSignUp} id={btnId}>
-            {btnText}
-          </button>
-        </div>
-        <div id='kurspage-information-container'>
+    return (
+        <>
+            <div id="kurs-container">
+                <div id="kurs-header">
+                    <h1>Heimkunnskap</h1>
+                </div>
+                <div id="sub-header">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a
+                        mattis ipsum. Nullam eu felis odio. Etiam tempus felis ac
+                        condimentum ultrices.
+                    </p>
+                </div>
+                <div id="button-container">
+                    <button onClick={doSignUp} id={btnId}>
+                        {btnText}
+                    </button>
+                </div>
+                <div id='kurspage-information-container'>
                     <div id='kursinfo-box'>
                         <h2>Pristabell</h2>
                         <p>1 time: 129kr</p>
@@ -133,10 +129,10 @@ function Heimkunnskap(props) {
                         <p>Skomakergata</p>
                     </div>
                 </div>
-      </div>
-      <Toaster />
-    </>
-  );
+            </div>
+            <Toaster />
+        </>
+    );
 }
 
 export default Heimkunnskap;

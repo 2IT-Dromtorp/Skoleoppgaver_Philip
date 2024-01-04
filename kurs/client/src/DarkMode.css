@@ -10,6 +10,7 @@ body.dark-mode #navbar {
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     border-bottom: solid 1px #FFF;
+    z-index: 999;
   }
   
   /*Navbar content styling*/
@@ -72,11 +73,6 @@ body.dark-mode #navbar {
     margin: 20px 10px 30px;
     width: 60vw;
     text-align: center;
-  }
-  
-  body.dark-mode #image {
-    height: 50vh;
-    background-color: #000;
   }
   
   #kurs {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { toast, Toaster } from 'react-hot-toast';
 import Logo from "../images/VikenLogoWhite.png";
@@ -14,18 +14,10 @@ const Layout = (props) => {
         if (loggedIn) {
             setLoggedIn(false)
             setEmail("")
+            localStorage.setItem('loggedIn', 'false');
+            localStorage.setItem('email', '');
             toast.success("Bruker logget ut")
         }
-    }
-
-    const logIn = () => {
-        props.setLoggedIn(true)
-        props.setEmail("philip")
-        navigate(-1)
-    }
-
-    const changeFontSize = () => {
-
     }
 
     const changeColorTheme = () => {
@@ -41,8 +33,6 @@ const Layout = (props) => {
     if (storedDarkMode && storedDarkMode === 'true') {
         document.body.classList.add('dark-mode');
     }
-    
-
 
     return (
         <>

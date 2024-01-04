@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './LightMode.css';
 import './DarkMode.css';
 import Layout from "./pages/Layout";
@@ -28,12 +28,6 @@ function App() {
     }
   }, []);
 
-  // Effect to update localStorage when login status or email changes
-  useEffect(() => {
-    localStorage.setItem('loggedIn', JSON.stringify(loggedIn));
-    localStorage.setItem('email', email);
-  }, [loggedIn, email]);
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -47,7 +41,6 @@ function App() {
             <Route path="kroppsoving" element={<Kroppsoving email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
             <Route path="norsk" element={<Norsk email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
             <Route path="heimkunnskap" element={<Heimkunnskap email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
-            <Route />
           </Route>
         </Routes>
       </BrowserRouter>

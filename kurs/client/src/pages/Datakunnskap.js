@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
 
@@ -6,11 +6,8 @@ function Datakunnskap(props) {
     const { loggedIn, email } = props;
 
     const COURSE_ID = 'DATAKUNNSKAP';
-    const localStorageKey = 'datakunnskapIsRegistered';
 
-    const [isRegistered, setIsRegistered] = useState(
-        localStorage.getItem(localStorageKey) === 'true'
-    );
+    const [isRegistered, setIsRegistered] = useState(false);
 
     let btnId = '';
     let btnText = 'Meld deg på';
@@ -30,6 +27,8 @@ function Datakunnskap(props) {
     }
 
     const is_registered = () => {
+        console.log("is_registered?");
+
         const body = {
             email: email,
             course_id: COURSE_ID,
@@ -47,10 +46,7 @@ function Datakunnskap(props) {
                 console.log(data);
                 if (data.status === 'S') {
                     setIsRegistered(data.is_registered);
-                    localStorage.setItem(localStorageKey, data.is_registered);
-                    toast.success(data.message);
-                } else {
-                    console.error(data.message);
+                    // localStorage.setItem(localStorageKey, data.is_registered);                    
                 }
             })
             .catch((error) => console.error(error));
@@ -79,19 +75,19 @@ function Datakunnskap(props) {
             .then((data) => {
                 if (data.status === 'S') {
                     setIsRegistered(!isRegistered);
-                    localStorage.setItem(localStorageKey, !isRegistered);
+                    // localStorage.setItem(localStorageKey, !isRegistered);
+                    toast.success(data.message);
                 } else {
                     console.error(data.message);
+                    toast.error(data.message);
                 }
             })
             .catch((error) => console.error(error));
     };
 
-    const navigate = useNavigate();
+    useNavigate();
 
-    useEffect(() => {
-        is_registered();
-    }, [email, loggedIn]); // Updated the dependency array to include email and loggedIn
+    is_registered();
 
     return (
         <>

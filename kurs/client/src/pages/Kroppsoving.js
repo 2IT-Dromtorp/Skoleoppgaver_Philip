@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
 
@@ -6,11 +6,8 @@ function Kroppsoving(props) {
   const { loggedIn, email } = props;
 
   const COURSE_ID = 'KROPPSOVING';
-  const localStorageKey = 'kroppsovingIsRegistered';
 
-  const [isRegistered, setIsRegistered] = useState(
-    localStorage.getItem(localStorageKey) === 'true'
-  );
+  const [isRegistered, setIsRegistered] = useState(false);
 
   let btnId = '';
   let btnText = 'Meld deg på';
@@ -30,6 +27,8 @@ function Kroppsoving(props) {
   }
 
   const is_registered = () => {
+    console.log("is_registered?");
+
     const body = {
       email: email,
       course_id: COURSE_ID,
@@ -47,9 +46,7 @@ function Kroppsoving(props) {
         console.log(data);
         if (data.status === 'S') {
           setIsRegistered(data.is_registered);
-          localStorage.setItem(localStorageKey, data.is_registered);
-        } else {
-          console.error(data.message);
+          // localStorage.setItem(localStorageKey, data.is_registered);                    
         }
       })
       .catch((error) => console.error(error));
@@ -78,20 +75,19 @@ function Kroppsoving(props) {
       .then((data) => {
         if (data.status === 'S') {
           setIsRegistered(!isRegistered);
-          localStorage.setItem(localStorageKey, !isRegistered);
+          // localStorage.setItem(localStorageKey, !isRegistered);
           toast.success(data.message);
         } else {
           console.error(data.message);
+          toast.error(data.message);
         }
       })
       .catch((error) => console.error(error));
   };
 
-  const navigate = useNavigate();
+  useNavigate();
 
-  useEffect(() => {
-    is_registered();
-  }, [email, loggedIn]); // Updated the dependency array to include email and loggedIn
+  is_registered();
 
   return (
     <>
@@ -112,27 +108,27 @@ function Kroppsoving(props) {
           </button>
         </div>
         <div id='kurspage-information-container'>
-                    <div id='kursinfo-box'>
-                        <h2>Pristabell</h2>
-                        <p>1 time: 129kr</p>
-                        <p>2 timer: 239kr</p>
-                        <p>3 timer: 329kr</p>
-                        <p>4 timer: 399kr</p>
-                        <p>4+ timer: 99kr per time</p>
-                    </div>
-                    <div id='kursinfo-box'>
-                        <h2>Timeplan</h2>
-                        <p>1. Juni - 19:00-20:00</p>
-                        <p>2. Juni - 19:00-20:00</p>
-                        <p>3. Juni - 19:00-20:00</p>
-                        <p>4. Juni - 19:00-20:00</p>
-                        <p>5. Juni - 19:00-20:00</p>
-                    </div>
-                    <div id='kursinfo-box'>
-                        <h2>Oppmøtesteder</h2>
-                        <p>Skomakergata</p>
-                    </div>
-                </div>
+          <div id='kursinfo-box'>
+            <h2>Pristabell</h2>
+            <p>1 time: 129kr</p>
+            <p>2 timer: 239kr</p>
+            <p>3 timer: 329kr</p>
+            <p>4 timer: 399kr</p>
+            <p>4+ timer: 99kr per time</p>
+          </div>
+          <div id='kursinfo-box'>
+            <h2>Timeplan</h2>
+            <p>1. Juni - 19:00-20:00</p>
+            <p>2. Juni - 19:00-20:00</p>
+            <p>3. Juni - 19:00-20:00</p>
+            <p>4. Juni - 19:00-20:00</p>
+            <p>5. Juni - 19:00-20:00</p>
+          </div>
+          <div id='kursinfo-box'>
+            <h2>Oppmøtesteder</h2>
+            <p>Skomakergata</p>
+          </div>
+        </div>
       </div>
       <Toaster />
     </>

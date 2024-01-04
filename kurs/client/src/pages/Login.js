@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import React, { useState } from 'react'
+import { Link, useNavigate } from "react-router-dom";
 import { toast, Toaster } from 'react-hot-toast';
 
 function Login(props) {
-    const { loggedIn, setEmail, setLoggedIn } = props
+    const { setEmail, setLoggedIn } = props
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -24,7 +24,7 @@ function Login(props) {
         });
 
         console.log(body);
-        fetch("/api/login", { // http://localhost:3001
+        fetch("/api/login", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -38,8 +38,10 @@ function Login(props) {
                     setEmail(username)
                     setLoggedIn(true)
                     toast.success(data.message);
-                    const timer = setTimeout(() => {
-                        navigate("/home") 
+                    setTimeout(() => {
+                        navigate("/home")
+                        localStorage.setItem('loggedIn', 'true');
+                        localStorage.setItem('email', username);
                     }, 2000);
                 } else {
                     toast.error(data.message);
