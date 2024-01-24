@@ -51,7 +51,7 @@ const Layout = (props) => {
                     }}
                     className="button"
                 >
-                        {loggedIn ? "logg ut" : "logg inn"}
+                        {loggedIn ? "Logg ut" : "Logg inn"}
                     </button>
 
                 </div>

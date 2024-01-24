@@ -7,6 +7,7 @@ const port = 3001;
 app.use(cors());
 
 app.use(express.json());
+
 const POOL = mysql.createPool({
     host: 'localhost',
     port: 3306,
@@ -40,27 +41,26 @@ app.get('/', (request, response) => {
     });
 });
 
-app.post('/api/addhobby', (req, res) => {
-    let sql = "select Hobby from elev where ElevID = ? and Hobby = ?";
-    let values = [req.body.email, req.body.course_id];
-    POOL.query(sql, values, function (err, result) {
-        if (err) 
-            throw err;
-        else if (!result[0]) {
-            res.status(200).send({status: "S", is_registered: false, message: "Ikke påmeldt"});
-        } else {
-            res.status(200).json({status: "S", is_registered: true, message: "Påmeldt"});
+app.put('/api/updateuser/:elevID', (request, response) => {
+    const elevID = request.params.elevID;
+    let sql = "UPDATE elev SET Fornavn = ?, Etternavn = ?, DatamaskinID = ?, Klasse = ?, Hobby = ?, Kjonn = ? WHERE ElevID = ?";
+    let values = [
+        request.body.Fornavn,
+        request.body.Etternavn,
+        request.body.DatamaskinID,
+        request.body.Klasse,
+        request.body.Hobby,
+        request.body.Kjonn,
+        elevID
+    ];
+
+    POOL.query(sql, values, (err, result) => {
+        if (err) {
+            console.error("Error updating user:", err);
+            return response.status(500).json({ status: "E", message: "Error updating user", error: err.message });
         }
-    })
-});
 
-app.get('/updateuser/:newhobby', (request, response, results) => {
-
-    let newhobby = request.params.newhobby;
-    console.log('Ny hobby ' + (newhobby));
-    response.send('Ny hobby ' + (newhobby))
-});
-
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+        console.log("User updated successfully!");
+        response.status(200).json({ status: "S", message: "User updated successfully" });
+    });
 });
