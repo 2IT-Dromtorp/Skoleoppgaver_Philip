@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import tiananmen from "./images/man-Chinese-line-tanks-Beijing-demonstrators-Tiananmen-June-5-1989.webp";
 import xijinping from "./images/lqDFDXXvfqMs7kyQ9y1FrGcQzdCE23uMPlcxFqo_oYE.webp";
-import socialcredit from "./images/4f633a9e8508310bc1a18f9092ce078b.jpg";
+import socialcredits from "./images/4f633a9e8508310bc1a18f9092ce078b.jpg";
 import './App.css';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   const images = [
     tiananmen,
     xijinping,
-    socialcredit
+    socialcredits
   ];
 
   const quotes = [
