@@ -2,9 +2,7 @@ import './App.css';
 
 function App() {
   const skibidi = () => {
-    setTimeout(() => {
-      window.location.href="https://en.wikipedia.org/wiki/Skibidi_Toilet";
-    }, 2000)
+    window.location.href="https://en.wikipedia.org/wiki/Skibidi_Toilet";
   }
   return (
   <div id='main' onClick={skibidi}>
