@@ -3,7 +3,7 @@ import './App.css';
 function App() {
   const skibidi = () => {
     alert("Skibidi dop dop dop dop yes yes yes skibidi dip skibido dop skibidi yes yes yes.")
-    window.location.href="https://www.youtube.com/playlist?list=PL-ZXraMeHBPJHXBhrNowJaQslyqtUg-tZ"
+    window.location.href="https://www.youtube.com/playlist?list=PL-ZXraMeHBPJHXBhrNowJaQslyqtUg-tZ";
   }
   return (
   <div id='main' onClick={skibidi}>
