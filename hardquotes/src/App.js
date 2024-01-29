@@ -20,8 +20,15 @@ function App() {
     "我们不能将 JavaScript Python 化。"
   ];
 
+  const links = [
+    "https://www.pornhub.com/",
+    "https://www.vg.no",
+    "https://aftenposten.no"
+  ]
+
   const [randomQuote, setRandomQuote] = useState('');
   const [randomImage, setRandomImage] = useState('');
+  const [randomLink, setRandomLink] = useState('');
 
   const hardQuote = () => {
     const randomQuoteIndex = Math.floor(Math.random() * quotes.length);
@@ -34,11 +41,19 @@ function App() {
     setRandomImage(selectedImage);
   };
 
+  const randomRedirect = () => {
+    const randomLinkIndex = Math.floor(Math.random() * links.length);
+    const selectedLink = links[randomLinkIndex];
+    setRandomLink(selectedLink);
+
+    window.location.href = selectedLink;
+  }
+
   return (
-    <div>
-      <button onClick={hardQuote}>Press for a hard quote.</button>
+    <div id='main'>
+      <a id='qbtn' onClick={hardQuote}>Press for a hard quote.</a>
       {randomQuote && <p>{randomQuote}</p>}
-      {randomImage && <img src={randomImage} alt="Random Image" height="400px"/>}
+      {randomImage && <img src={randomImage} onClick={randomRedirect} width="20%" />}
     </div>
   );
 }
