@@ -4,7 +4,7 @@ function App() {
   const skibidi = () => {
     setTimeout(() => {
       window.location.href="https://en.wikipedia.org/wiki/Skibidi_Toilet";
-    }, 3000)
+    }, 2000)
   }
   return (
   <div id='main' onClick={skibidi}>
