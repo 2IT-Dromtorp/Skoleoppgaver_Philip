@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import tiananmen from "./images/man-Chinese-line-tanks-Beijing-demonstrators-Tiananmen-June-5-1989.webp";
-import socialcredits from "./images/4f633a9e8508310bc1a18f9092ce078b.jpg";
-import negativesocialcredits from "./images/image-2024-01-30-084132169.png";
 import './App.css';
+const tiananmen = "https://i.ibb.co/yBxNp6M/image-2024-01-30-122444707.png";
+const socialcredits = "https://i.ibb.co/58WqM8Y/4f633a9e8508310bc1a18f9092ce078b.jpg";
+const negativesocialcredits = "https://i.ibb.co/wQPwZJM/image-2024-01-30-084132169.png";
 
 function App() {
 
