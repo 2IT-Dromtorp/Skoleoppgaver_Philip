@@ -10,7 +10,6 @@ app.listen(port, () => {
 
 app.get('/:name', (req, res) => {
     let name = req.params.name;
-    res.send(name)
 
     if (name === 'andreas') {
         res.redirect('https://pornhub.com')
