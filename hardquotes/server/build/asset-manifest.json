@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.a37d789e.css",
-    "main.js": "/static/js/main.546f0552.js",
+    "main.css": "/static/css/main.7adcc140.css",
+    "main.js": "/static/js/main.fb5dd02b.js",
     "static/js/787.93207a59.chunk.js": "/static/js/787.93207a59.chunk.js",
     "static/media/man-Chinese-line-tanks-Beijing-demonstrators-Tiananmen-June-5-1989.webp": "/static/media/man-Chinese-line-tanks-Beijing-demonstrators-Tiananmen-June-5-1989.c3c1d4c3bbadb97c4351.webp",
-    "static/media/lqDFDXXvfqMs7kyQ9y1FrGcQzdCE23uMPlcxFqo_oYE.webp": "/static/media/lqDFDXXvfqMs7kyQ9y1FrGcQzdCE23uMPlcxFqo_oYE.5bda19eb0b0ccea6935b.webp",
+    "static/media/image-2024-01-30-084132169.png": "/static/media/image-2024-01-30-084132169.36a68dffd7aa57aa4ab2.png",
     "static/media/jpg": "/static/media/4f633a9e8508310bc1a18f9092ce078b.22eacf47cc5f3f8e1d0e.jpg",
     "index.html": "/index.html",
-    "main.a37d789e.css.map": "/static/css/main.a37d789e.css.map",
-    "main.546f0552.js.map": "/static/js/main.546f0552.js.map",
+    "main.7adcc140.css.map": "/static/css/main.7adcc140.css.map",
+    "main.fb5dd02b.js.map": "/static/js/main.fb5dd02b.js.map",
     "787.93207a59.chunk.js.map": "/static/js/787.93207a59.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a37d789e.css",
-    "static/js/main.546f0552.js"
+    "static/css/main.7adcc140.css",
+    "static/js/main.fb5dd02b.js"
   ]
 }

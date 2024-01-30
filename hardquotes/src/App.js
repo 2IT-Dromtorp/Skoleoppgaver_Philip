@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import tiananmen from "./images/man-Chinese-line-tanks-Beijing-demonstrators-Tiananmen-June-5-1989.webp";
-import xijinping from "./images/lqDFDXXvfqMs7kyQ9y1FrGcQzdCE23uMPlcxFqo_oYE.webp";
 import socialcredits from "./images/4f633a9e8508310bc1a18f9092ce078b.jpg";
+import negativesocialcredits from "./images/image-2024-01-30-084132169.png";
 import './App.css';
 
 function App() {
 
   const images = [
     tiananmen,
-    xijinping,
-    socialcredits
+    socialcredits,
+    negativesocialcredits
   ];
 
   const quotes = [
@@ -21,7 +21,7 @@ function App() {
   ];
 
   const links = [
-    "https://www.pornhub.com/",
+    "https://www.youtube.com/",
     "https://www.vg.no",
     "https://aftenposten.no"
   ]
@@ -51,9 +51,9 @@ function App() {
 
   return (
     <div id='main'>
-      <a id='qbtn' onClick={hardQuote}>Press for a hard quote.</a>
-      {randomQuote && <p>{randomQuote}</p>}
-      {randomImage && <img src={randomImage} onClick={randomRedirect} width="20%" />}
+      <a id='qbtn' onClick={hardQuote}>Generate hard quote.</a>
+      <div id='content'>{randomQuote && <p>{randomQuote}</p>}
+      {randomImage && <img src={randomImage} onClick={randomRedirect} width="20%" />}</div>
     </div>
   );
 }
