@@ -13,8 +13,8 @@ app.get('/:name', (req, res) => {
     res.send(name)
 
     if (name === 'andreas') {
-        window.location.href('https://pornhub.com')
+        res.redirect('https://pornhub.com')
     } else if (name === 'mattis') {
-        window.location.href('https://github.com')
+        res.redirect('https://github.com')
     }
   })
