@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const login = () => {
+    const username = document.querySelector('input[type="username"]').value
+    const password = document.querySelector('input[type="password"]').value
+    if (username === 'mongo' && password === 'db') {
+      window.location.href = '/andreas'
+    } else if (username === 'mattis' && password === 'password') {
+      window.location.href = '/mattis'
+    } else {
+      alert('Wrong username or password')
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id='main'>
+      <div id='loginform'>
+        <input type='username' placeholder='username'></input>
+        <input type='password' placeholder='password'></input>
+        <a onClick={login}></a>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
