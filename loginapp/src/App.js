@@ -19,7 +19,7 @@ function App() {
       <div id='loginform'>
         <input type='username' placeholder='username'></input>
         <input type='password' placeholder='password'></input>
-        <a onClick={login}></a>
+        <a onClick={login}>Logg Inn</a>
       </div>
     </div>
   )
