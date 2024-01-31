@@ -1,28 +1,29 @@
 import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const login = () => {
-    const username = document.querySelector('input[type="username"]').value
-    const password = document.querySelector('input[type="password"]').value
+  const login = (event) => {
+    event.preventDefault();
+
     if (username === 'mongo' && password === 'db') {
-      window.location.href = '/andreas'
+      window.location.href = 'http://localhost:3000/andreas';
     } else if (username === 'mattis' && password === 'password') {
-      window.location.href = '/mattis'
-    } else {
-      alert('Wrong username or password')
+      window.location.href = 'http://localhost:3000/mattis';
     }
-  }
+  };
 
   return (
     <div id='main'>
       <div id='loginform'>
-        <input type='username' placeholder='username'></input>
-        <input type='password' placeholder='password'></input>
-        <a onClick={login}>Logg Inn</a>
+        <input type='text' placeholder='username' value={username} onChange={(e) => setUsername(e.target.value)} />
+        <input type='password' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+        <button onClick={login}>Logg Inn</button>
       </div>
     </div>
-  )
+  );
 }
 
 export default App;
