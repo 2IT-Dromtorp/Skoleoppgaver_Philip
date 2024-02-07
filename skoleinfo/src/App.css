@@ -1,0 +1,179 @@
+body {
+  background: url("https://i.ibb.co/VVQfT8X/IMG-3917.jpg") no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+h1 {
+  color: #FFF;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #FFF;
+}
+
+p {
+  color: #FFF;
+  margin: 0;
+}
+
+#outlet {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* desktop styling */
+
+#navbar {
+  gap: 5px;
+  top: 0;
+  position: sticky;
+  backdrop-filter: blur(20px);
+  padding: 2px;
+  border-bottom: solid 1px #FFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#left-region {
+  display: flex;
+}
+
+#right-region {
+  gap: 5px;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: space-around;
+}
+
+#navbar a {
+  justify-content: center;
+  display: flex;
+  flex-grow: 1;
+  padding: 10px 18px;
+  transition: ease-in-out 0.3s;
+  border-radius: 10px;
+}
+
+#navbar a:hover {
+  background-color: #FFFFFF30;
+}
+
+/* klubb component styling */
+
+#klubb-container {
+  background-color: orange;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  gap: 12px;
+  border-radius: 10px;
+  width: 60vw;
+}
+
+#klubb {
+  flex-direction: column;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  height: 80px;
+  border-radius: 10px;
+  transition: ease-in-out 0.3s;
+}
+
+#klubbNavn {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#klubb:hover {
+  box-shadow: #FFF 0px 0px 10px;
+  cursor: pointer;
+  transform: scale(1.01);
+}
+
+
+/* buss component styling */
+
+#buss-container {
+  border-radius: 10px;
+  width: 40vw;
+  background-color: #000;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#header {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#labels {
+  padding: 0 0 0 4px;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
+#departureIndex {
+  padding: 0;
+  margin: 12px 0 0;
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+#departure {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#bus {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#busCode {
+  background-color: #76a300;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+#busName {
+  font-weight: bold;
+}
+
+#departureLabels {
+  align-self: flex-end;
+  display: flex;
+  gap: 20px;
+}
+
+#aimed {
+  color: #f7d96e;
+}
+
+/* mobile styling */
+
+@media only screen and (max-width: 600px) {
+  #buss-container {
+    width: 90vw;
+  }
+
+  #klubb-container {
+    width: 90vw;
+  }
+}

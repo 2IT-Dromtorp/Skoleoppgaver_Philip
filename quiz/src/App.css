@@ -1,38 +1,48 @@
-.App {
-  text-align: center;
+body {
+  overflow: hidden;
+  color: #000;
+  background: url(https://img.freepik.com/free-photo/metal-mesh-texture_23-2148121725.jpg?w=740&t=st=1706702178~exp=1706702778~hmac=de70b843d577cde63f7676c9d17f52b6564ca86060cd1c0f0c46c006e93cc910) no-repeat;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/*desktop styling*/
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/*mobile styling*/
+
+@media only screen and (max-width: 600px) {
+
+  #quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 100vw;
+    height: 100vh;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  #quizform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    background: #FFF;
+    border-radius: 20px;
+    box-shadow: #000 0px 0px 10px;
   }
-  to {
-    transform: rotate(360deg);
+
+  #quizform span {
+    font-size: 1em;
+    margin: 0 0 18px;
+  }
+
+  #submit {
+    padding: 8px;
+    width: 100%;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 10px;
   }
 }

@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Gitar klubb",
+        "regi": "Gitarmannen",
+        "lokasjon": "Location for Gitar klubb",
+        "tider": "Timings for Gitar klubb"
+    },
+    {
+        "name": "Sjakk klubb",
+        "regi": "Magnus Carlsen",
+        "lokasjon": "Location for Sjakk klubb",
+        "tider": "Timings for Sjakk klubb"
+    },
+    {
+        "name": "DND klubb",
+        "regi": "Drage",
+        "lokasjon": "Location for DND klubb",
+        "tider": "Timings for DND klubb"
+    },
+    {
+        "name": "Filmklubb",
+        "regi": "Bjørn Harald",
+        "lokasjon": "Location for Filmklubb",
+        "tider": "Timings for Filmklubb"
+    }
+]
