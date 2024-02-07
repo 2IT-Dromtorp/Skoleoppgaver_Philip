@@ -7,3 +7,6 @@ app.use(express.static("build"));
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
+
+
+//skibididididid dop yes yes
