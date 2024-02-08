@@ -5,9 +5,9 @@ const port = process.env.PORT || 8080
 
 app.use(express.static("build"));
 
-/*app.get("/buss", (req, res) => {
-    res.sendFile(path.resolve("./build/index.html"));
-});*/
+app.get("/buss", (req, res) => {
+    res.send("Her skal det bli wen fungerende get request");
+});
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`)
