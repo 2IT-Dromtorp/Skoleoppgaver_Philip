@@ -5,7 +5,7 @@ const port = process.env.PORT || 8080
 
 app.use(express.static("build"));
 
-app.get("/buss", (req, res) => {
+app.get("/api", (req, res) => {
     res.send("Her skal det bli wen fungerende get request");
 });
 
