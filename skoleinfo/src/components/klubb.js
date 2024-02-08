@@ -1,28 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import klubber from './klubber.json';
 
 function Klubb() {
+  const [clubs, setClubs] = useState([]);
+
+  useEffect(() => {
+    setClubs(klubber);
+  }, []);
   return (
-    /*{klubber.map((klubb, index) => (
-        <div key={index} id='klubb'>
-          <p id='klubbNavn'>{klubb.name}</p>
-          <p>{klubb.regi}</p>
-          <p>{klubb.lokasjon}</p>
-          <p>{klubb.tider}</p>
-        </div>
-      ))}*/
     <div id='klubb-container'>
-      <div id='klubb'>
-        <p id='klubbNavn'>Klubba 1</p>
-      </div>
-      <div id='klubb'>
-        <p id='klubbNavn'>Klubba 2</p>
-      </div>
-      <div id='klubb'>
-        <p id='klubbNavn'>Klubba 3</p>
-      </div>
-      <div id='klubb'>
-        <p id='klubbNavn'>Klubba 4</p>
-      </div>
+      {
+        clubs.map(club => (
+          <div key={club.id} id='klubb'>
+            <p id='klubbNavn'>{club.navn}</p>
+            <p>{club.regi}</p>
+            <p>{club.lokasjon}</p>
+            <p>{club.tider}</p>
+          </div>
+        ))
+      }
     </div>
   );
 }

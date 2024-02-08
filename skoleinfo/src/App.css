@@ -68,7 +68,6 @@ p {
 /* klubb component styling */
 
 #klubb-container {
-  background-color: orange;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
   gap: 12px;
@@ -133,7 +132,13 @@ p {
   flex-direction: column;
 }
 
+#departureTime, #aimed {
+  padding: 0 10px 0 0;
+}
+
 #departure {
+  border-top: 1px solid #FFF;
+  padding: 5px 0 0 0;
   justify-content: space-between;
   display: flex;
   flex-direction: row;

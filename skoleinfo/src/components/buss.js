@@ -14,7 +14,7 @@ function Buss() {
                 stopPlace(id: "NSR:StopPlace:4977") {
                     name
                     id
-                    estimatedCalls(numberOfDepartures: 12, whiteListedModes: [bus]) {
+                    estimatedCalls(numberOfDepartures: 5, whiteListedModes: [bus]) {
                         expectedDepartureTime
                         aimedDepartureTime
                         destinationDisplay {
@@ -61,7 +61,7 @@ function Buss() {
         const expectedDate = new Date(expectedTime);
         const aimedDate = new Date(aimedTime);
         const timeToDisplay = Math.abs(expectedDate - aimedDate) > 60000 ? aimedDate : expectedDate;
-        return timeToDisplay.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+        return timeToDisplay.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
     };
 
     return (
@@ -75,7 +75,9 @@ function Buss() {
             </div>
             <div>
                 <ul id='departureIndex'>
+                    
                     {departures.map((departure, index) => (
+                        <>
                         <li id='departure' key={index}>
                             <div id='bus'>
                                 <p id='busCode'>{departure.serviceJourney.line.publicCode}</p>
@@ -87,6 +89,7 @@ function Buss() {
                                 </p>
                             </div>
                         </li>
+                        </>
                     ))}
                 </ul>
             </div>

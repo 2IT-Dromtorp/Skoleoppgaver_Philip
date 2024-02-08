@@ -1,0 +1,38 @@
+[
+    {
+        "navn": "Gitar klubb",
+        "regi": "Ahmad Murtaza Zahid",
+        "lokasjon": "Musikkrommet",
+        "tider": "11:30-12:00"
+    },
+    {
+        "navn": "Sjakk klubb",
+        "regi": "Magnus Carlsen",
+        "lokasjon": "Sjakkrommet",
+        "tider": "11:30-12:00"
+    },
+    {
+        "navn": "DND klubb",
+        "regi": "Drage",
+        "lokasjon": "Grupperommet",
+        "tider": "11:30-12:00"
+    },
+    {
+        "navn": "Filmklubb",
+        "regi": "Bjørn Harald",
+        "lokasjon": "Auditoriet",
+        "tider": "11:30-12:00"
+    },
+    {
+        "navn": "Skibidi klubb",
+        "regi": "Ultra camera man",
+        "lokasjon": "Skibidis",
+        "tider": "17:00-18:30"
+    },
+    {
+        "navn": "Spill klubb",
+        "regi": "Ninja low taper fade",
+        "lokasjon": "Doen",
+        "tider": "11:30-12:00"
+    }
+]
