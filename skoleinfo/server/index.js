@@ -5,12 +5,12 @@ const path = require("node:path")
 
 app.use(express.static("build"));
 
-app.get("/*", (req, res) => {
-    res.sendFile(path.resolve("./build/index.html"));
-});
 
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}`)
-  })
+  console.log(`Server listening on port ${port}`)
+})
 
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve("./build/index.html"));
+});
 //gub hueuaddas
