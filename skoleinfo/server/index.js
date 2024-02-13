@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 8080
-//const path = require("node:path")
+const path = require("node:path")
 
 app.use(express.static("build"));
 
-app.get("/api", (req, res) => {
-    res.send("Her skal det bli wen fungerende get request");
+app.get("/*", (req, res) => {
+    res.sendFile(path.resolve("./build/index.html"));
 });
 
 app.listen(port, () => {
