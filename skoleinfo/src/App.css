@@ -1,43 +1,36 @@
 body {
-  background: url("https://i.ibb.co/VVQfT8X/IMG-3917.jpg") no-repeat;
-  background-size: cover;
   overflow: hidden;
+  background-color: #0E0F16;
 }
 
-h1 {
+h1, a, p {
   color: #FFF;
   margin: 0;
 }
 
 a {
   text-decoration: none;
-  color: #FFF;
-}
-
-p {
-  color: #FFF;
-  margin: 0;
 }
 
 #outlet {
-  height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-grow: 1;
+  overflow: auto;
 }
 
-/* desktop styling */
+/* DESKTOP styling */
+
+/* NAVBAR styling */
 
 #navbar {
   gap: 5px;
   top: 0;
   position: sticky;
   backdrop-filter: blur(20px);
-  padding: 2px;
-  border-bottom: solid 1px #FFF;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: solid 1px #FFFFFF50;
 }
 
 #left-region {
@@ -45,140 +38,127 @@ p {
 }
 
 #right-region {
-  gap: 5px;
   display: flex;
+  gap: 5px;
   align-items: center;
-  flex-grow: 1;
   justify-content: space-around;
 }
 
 #navbar a {
-  justify-content: center;
-  display: flex;
-  flex-grow: 1;
   padding: 10px 18px;
-  transition: ease-in-out 0.3s;
-  border-radius: 10px;
 }
 
-#navbar a:hover {
-  background-color: #FFFFFF30;
-}
+/* BUSS styling */
 
-/* klubb component styling */
-
-#klubb-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
-  gap: 12px;
-  border-radius: 10px;
-  width: 60vw;
-}
-
-#klubb {
-  flex-direction: column;
-  padding: 10px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #000;
-  height: 80px;
-  border-radius: 10px;
-  transition: ease-in-out 0.3s;
-}
-
-#klubbNavn {
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-#klubb:hover {
-  box-shadow: #FFF 0px 0px 10px;
-  cursor: pointer;
-  transform: scale(1.01);
-}
-
-
-/* buss component styling */
-
-#buss-container {
-  border-radius: 10px;
-  width: 40vw;
-  background-color: #000;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-#header {
-  display: flex;
-  justify-content: center;
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-#labels {
-  padding: 0 0 0 4px;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: row;
-}
-
-#departureIndex {
-  padding: 0;
-  margin: 12px 0 0;
-  gap: 8px;
-  display: flex;
-  flex-direction: column;
-}
-
-#departureTime, #aimed {
-  padding: 0 10px 0 0;
-}
-
-#departure {
-  border-top: 1px solid #FFF;
-  padding: 5px 0 0 0;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-#bus {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-#busCode {
-  background-color: #76a300;
-  padding: 6px;
-  border-radius: 8px;
-}
-
-#busName {
-  font-weight: bold;
-}
-
-#departureLabels {
-  align-self: flex-end;
-  display: flex;
-  gap: 20px;
+#main {
+  background-color: brown;
+  flex-grow: 1;
 }
 
 #aimed {
-  color: #f7d96e;
+  color: #F7D96E;
 }
 
-/* mobile styling */
+/* MOBILE BUSS styling */
 
-@media only screen and (max-width: 600px) {
-  #buss-container {
-    width: 90vw;
+@media screen and (max-width: 600px) {
+  #main {
+    display: flex;
   }
 
-  #klubb-container {
-    width: 90vw;
+  #buss-container {
+    padding: 5px 0 5px 0;
+    gap: 5px;
+    width: 100%;
+    display: flex;
+    background-color: #0E0F16;
+    flex-direction: column;
+  }
+
+  #header {
+    align-self: center;
+    font-size: 2em;
+    font-weight: 500;
+    display: flex;
+  }
+
+  #labels {
+    padding: 0 10px 0;
+    justify-content: flex-end;
+    display: flex;
+  }
+
+  #departureIndex {
+    padding: 0 5px 0 !important;
+    list-style: none;
+    border-top: solid 1px #FFF;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+  }
+
+  #departureIndex > li:not(:first-child) {
+    border-top: 1px solid #FFFFFF50;
+  }
+
+  #departure {
+    padding: 5px 10px 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  #transportCode {
+    width: 50px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000050;
+    border-radius: 10px;
+  }
+
+  #bus {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+  }
+  
+  #searchForm {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #searchForm div {
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  input {
+    border: solid 2px #00000000;
+    font-size: 16px;
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 100px;
+  }
+
+  button {
+    border: solid 2px #00000000;
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 100px;
+    background-color: #FFF;
+    color: #000;
+  }
+
+  button:focus, input:focus {
+    outline: none;
+    border: solid 2px #0000FF;
   }
 }

@@ -17,8 +17,6 @@ function Layout() {
         <div id="outlet">
             <Outlet />
         </div>
-        <div id="footer">
-        </div>
         </>
     )
 }

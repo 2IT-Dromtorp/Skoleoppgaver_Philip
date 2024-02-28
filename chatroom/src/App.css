@@ -1,0 +1,87 @@
+#root {
+  height: 100vh;
+  width: 100vw;
+  background: #FFF;
+}
+
+#main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #FFF;
+}
+
+#navbar {
+  display: flex;
+  padding: 1em;
+  justify-content: space-around;
+  z-index: 9;
+  background: linear-gradient(0deg, #00000000, #000);
+}
+
+#link {
+  color: #FFF;
+  text-decoration: none;
+}
+
+/*LOGIN STYLING*/
+
+#loginSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  width: 30%;
+  flex-direction: column;
+}
+
+#inputWrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+#inputWrapper input {
+  border: none;
+  outline: none;
+  border: solid 2px #00000030;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 1em;
+  font-size: 1em;
+  transition: .5s;
+}
+
+#inputWrapper input:focus {
+  border: solid 2px #142C8E;
+}
+
+#submitButton {
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 50px;
+  padding: .65em;
+  font-size: 1em;
+  text-decoration: none;
+  background-color: #142C8E;
+  border: solid 1px #142C8E;
+  color: #FFF;
+  cursor: pointer;
+}
+
+#signupLink {
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 50px;
+  padding: .65em;
+  font-size: 1em;
+  text-decoration: none;
+  background-color: #FFF;
+  border: solid 1px #142C8E;
+  color: #142C8E;
+  cursor: pointer;
+}

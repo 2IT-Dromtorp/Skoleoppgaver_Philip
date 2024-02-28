@@ -13,4 +13,3 @@ app.listen(port, () => {
 app.get("*", (req, res) => {
     res.sendFile(path.resolve("./build/index.html"));
 });
-//gub hueuaddas
