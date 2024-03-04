@@ -1,24 +1,31 @@
 #root {
-  height: 100vh;
-  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
   background: #FFF;
 }
 
-#main {
+#outlet {
+  display: flex;
+  flex-grow: 1;
+}
+
+#mainWindow {
+  flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
 }
 
 #navbar {
   display: flex;
   padding: 1em;
+  position: sticky;
   justify-content: space-between;
   align-items: center;
+  top: 0;
   z-index: 9;
-  background: #FFFFFF30;
-  backdrop-filter: blur(20px);
+  background: #FFF;
 }
 
 #blueLink {
@@ -56,14 +63,18 @@
   height: 2em;
 }
 
-/*LOGIN STYLING*/
+/*LOGIN & SIGNUP STYLING*/
 
 #loginSection {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1em;
-  width: 30vw;
+  background: #FFF;
+  box-shadow: #000 0 0 5px 0;
+  padding: 1em;
+  border-radius: 1em;
+  width: 30%;
   flex-direction: column;
 }
 
@@ -96,7 +107,7 @@
   padding: .65em;
   font-size: 1em;
   text-decoration: none;
-  background-color: #142C8E;
+  background: #142C8E;
   border: solid 1px #142C8E;
   color: #FFF;
   cursor: pointer;
@@ -110,8 +121,23 @@
   padding: .65em;
   font-size: 1em;
   text-decoration: none;
-  background-color: #FFF;
+  background: #FFF;
   border: solid 1px #142C8E;
   color: #142C8E;
   cursor: pointer;
+}
+
+/* ACCOUNT STYLING */
+
+#account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  background: #FFF;
+  box-shadow: #000 0 0 5px 0;
+  padding: 1em;
+  border-radius: 1em;
+  width: 90%;
+  flex-direction: column;
 }

@@ -43,7 +43,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login handleLogin={handleLogin} />} />
             <Route path='/signup' element={<Signup />} />
-            <Route path='/account' element={<AccountPage />} />
+            <Route path='/account' element={<AccountPage username={username} />} />
           </Route>
         </Routes>
       </BrowserRouter>

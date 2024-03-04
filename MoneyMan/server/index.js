@@ -16,7 +16,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 const userSchema = new mongoose.Schema({
   username: String,
   email: String,
-  password: String
+  password: String,
+  currency: Number
 });
 const User = mongoose.model('User', userSchema);
 
@@ -30,30 +31,35 @@ app.post('/signup', async (req, res) => {
   try {
     const existingUser = await User.findOne({ username });
     if (existingUser) {
-      return res.status(400).json({ error: 'Username already exists' });
+      return res.status(400).json({ error: 'Brukernavn fins allerede' });
     }
 
-    const newUser = new User({ username, email, password });
+    const newUser = new User({
+      username: username,
+      email: email,
+      password: password,
+      currency: 500,
+    });
     await newUser.save();
 
-    res.status(201).json({ message: 'User created successfully' });
+    res.status(201).json({ message: 'Bruker opprettet' });
   } catch (error) {
     console.error('Error signing up:', error);
-    res.status(500).json({ error: 'Failed to create user' });
+    res.status(500).json({ error: 'Kunne ikke lage bruker' });
   }
 });
 
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
-  
+
   try {
     const user = await User.findOne({ username, password });
-    
+
     if (!user) {
-      return res.status(401).json({ error: 'Invalid username or password' });
+      return res.status(401).json({ error: 'Feil brukernavn eller passord' });
     }
 
-    res.status(200).json({ message: 'You are logged in' });
+    res.status(200).json({ message: 'Du er logget inn' });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal server error' });
@@ -63,3 +69,5 @@ app.post('/login', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
+
+//"proxy":"http://localhost:8080" - add to package.json when testing locally

@@ -24,7 +24,9 @@ function Login({ handleLogin }) {
       if (response.ok) {
         handleLogin(username);
         toast.success('Logged in successfully');
-        navigate('/account');
+        setTimeout (() => {
+          navigate('/account');
+        }, 2000);
       } else {
         toast.error(data.error);
       }
@@ -35,7 +37,7 @@ function Login({ handleLogin }) {
   };
 
   return (
-    <div id="main">
+    <div id="mainWindow">
       <div id='loginSection'>
         <img id="logo" src={Logo} alt="Logo" />
         <div id='inputWrapper'>

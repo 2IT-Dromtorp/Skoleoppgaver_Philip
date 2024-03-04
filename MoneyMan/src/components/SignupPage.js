@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../images/MoneyMan.png';
 import { toast, Toaster } from 'react-hot-toast';
 
@@ -7,6 +7,7 @@ function Signup() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSignUp = async () => {
     try {
@@ -21,8 +22,8 @@ function Signup() {
       if (response.ok) {
         toast.success('User created successfully');
         setTimeout(() => {
-          window.location.href = '/login';
-        }, 1500);
+          navigate('/login');
+        }, 2000);
       } else {
         const data = await response.json();
         toast.error(data.error || 'Failed to create user');
@@ -34,9 +35,9 @@ function Signup() {
   };
 
   return (
-    <div id="main">
+    <div id="mainWindow">
       <div id="loginSection">
-        <img id="logo" src={Logo} />
+        <img id="logo" src={Logo} alt='logo'/>
         <div id="inputWrapper">
           <input placeholder="Brukernavn" value={username} onChange={(e) => setUsername(e.target.value)} />
         </div>
