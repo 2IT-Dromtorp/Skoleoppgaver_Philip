@@ -13,10 +13,10 @@ function Layout({ isLoggedIn, username, handleLogout }) {
   return (
     <>
       <div id='navbar'>
-        <div id='left-region'>
+        <div id='leftRegion'>
           <Link to='/'><img id="logo" src={Logo} /></Link>
         </div>
-        <div id='right-region'>
+        <div id='rightRegion'>
           {isLoggedIn ? (
             <>
               <Link id="link" to='/account'>Hei, @{username}</Link>
