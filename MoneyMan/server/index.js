@@ -1,3 +1,4 @@
+const path = require("node:path")
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -118,6 +119,10 @@ app.post('/transfer', async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve("./build/index.html"));
 });
 
 //  "proxy": "http://localhost:8080" 
