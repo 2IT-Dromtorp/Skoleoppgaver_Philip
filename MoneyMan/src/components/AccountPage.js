@@ -63,6 +63,9 @@ function AccountPage({ isLoggedIn, username }) {
         } else if (transferAmount > currency) {
             alert("Du har ikke nok MM");
             return;
+        } else if (recipient === username) {
+            alert("Du kan ikke overføre til deg selv");
+            return;
         }
 
         fetch('/transfer', {

@@ -84,7 +84,7 @@ app.get("/users", async (req, res) => {
   try {
     const users = await User.find({}, 'username');
     if (!users) {
-      return res.status(404).json({ error: 'No users found' });
+      return res.status(404).json({ error: 'Ingen brukere funnet' });
     }
     res.status(200).json({ users });
   } catch (err) {
@@ -100,17 +100,17 @@ app.post('/transfer', async (req, res) => {
     const senderUser = await User.findOne({ username: sender });
     const recipientUser = await User.findOne({ username: recipient });
     if (!senderUser || !recipientUser) {
-      return res.status(404).json({ error: 'Sender or recipient not found' });
+      return res.status(404).json({ error: 'Sender eller mottaker ikke funnet' });
     }
     if (senderUser.currency < amount) {
-      return res.status(400).json({ error: 'Sender does not have enough currency for the transfer' });
+      return res.status(400).json({ error: 'Du har ikke nok MM' });
     }
     senderUser.currency -= amount;
     recipientUser.currency += amount;
     await senderUser.save();
     await recipientUser.save();
 
-    res.status(200).json({ message: 'Currency transfer successful' });
+    res.status(200).json({ message: 'Penger sent' });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal server error' });
