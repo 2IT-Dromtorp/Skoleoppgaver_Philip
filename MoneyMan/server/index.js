@@ -27,19 +27,23 @@ app.use(cors());
 app.use(express.static("build"));
 
 app.post('/signup', async (req, res) => {
-  const { username, email, password } = req.body;
+  let { username, email, password } = req.body;
   username = username.toLowerCase();
+
 
   if (username === '') {
     res.status(400).send("Vennligst skriv inn et brukernavn");
     return;
-  } else if (username.split('').includes(' ')) {
+  }
+  if (username.split('').includes(' ')) {
     res.status(400).send("DU KAN IKKE HA MELLOMROM I BRUKERNAVN!!!!!!!!!!!!!!!");
     return;
-  } else if (email === '') {
+  }
+  if (email === '') {
     res.status(400).send("Vennligst skriv inn en email");
     return;
-  } else if (password === '') {
+  }
+  if (password === '') {
     res.status(400).send("Vennligst skriv inn et passord");
     return;
   }
