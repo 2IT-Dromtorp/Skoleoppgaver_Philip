@@ -30,7 +30,6 @@ app.post('/signup', async (req, res) => {
   let { username, email, password } = req.body;
   username = username.toLowerCase();
 
-
   if (username === '') {
     res.status(400).send("Vennligst skriv inn et brukernavn");
     return;

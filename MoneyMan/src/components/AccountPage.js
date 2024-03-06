@@ -57,13 +57,16 @@ function AccountPage({ isLoggedIn, username }) {
     };
 
     const transferCurrency = () => {
+
         if (transferAmount <= 0) {
             alert("Du kan ikke overføre 0 MM");
             return;
-        } else if (transferAmount > currency) {
+        }
+        if (transferAmount > currency) {
             alert("Du har ikke nok MM");
             return;
-        } else if (recipient === username) {
+        }
+        if (recipient === username) {
             alert("Du kan ikke overføre til deg selv");
             return;
         }
@@ -95,6 +98,7 @@ function AccountPage({ isLoggedIn, username }) {
     }
 
     const handleRecipientSelection = (selectedRecipient) => {
+        setSearchInput(selectedRecipient);
         setRecipient(selectedRecipient);
         setShowDropdown(false);
     };
@@ -125,7 +129,7 @@ function AccountPage({ isLoggedIn, username }) {
                                 </div>
                             )}
                         </div>
-                        <input id='transferBox' type='number' value={transferAmount} onChange={(e) => setTransferAmount(parseFloat(e.target.value))}
+                        <input id='transferBox' type='number' value={transferAmount} onChange={(e) => setTransferAmount(Math.floor(parseFloat(e.target.value) * 100) * 0.01)}
                             placeholder="Enter amount"></input>
                         <button id='transferButton' onClick={transferCurrency}>Send penger</button>
                     </div>

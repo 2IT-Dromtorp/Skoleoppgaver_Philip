@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.604e17bd.css",
-    "main.js": "/static/js/main.d7db66e5.js",
+    "main.js": "/static/js/main.a43502d1.js",
     "static/js/453.a36f64b2.chunk.js": "/static/js/453.a36f64b2.chunk.js",
     "static/media/MoneyMan.png": "/static/media/MoneyMan.70a0995aac796f7b04d4.png",
     "index.html": "/index.html",
     "main.604e17bd.css.map": "/static/css/main.604e17bd.css.map",
-    "main.d7db66e5.js.map": "/static/js/main.d7db66e5.js.map",
+    "main.a43502d1.js.map": "/static/js/main.a43502d1.js.map",
     "453.a36f64b2.chunk.js.map": "/static/js/453.a36f64b2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.604e17bd.css",
-    "static/js/main.d7db66e5.js"
+    "static/js/main.a43502d1.js"
   ]
 }
