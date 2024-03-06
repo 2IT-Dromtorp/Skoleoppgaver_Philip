@@ -31,13 +31,17 @@ app.post('/signup', async (req, res) => {
   username = username.toLowerCase();
 
   if (username === '') {
-    toast.error('Vennligst skriv inn et brukernavn');
+    res.status(400).send("Vennligst skriv inn et brukernavn");
+    return;
   } else if (username.split('').includes(' ')) {
-    toast.error("DU KAN IKKE HA MELLOMROM I BRUKERNAVN!!!!!!!!!!!!!!!");
+    res.status(400).send("DU KAN IKKE HA MELLOMROM I BRUKERNAVN!!!!!!!!!!!!!!!");
+    return;
   } else if (email === '') {
-    toast.error('Vennligst skriv inn en email');
+    res.status(400).send("Vennligst skriv inn en email");
+    return;
   } else if (password === '') {
-    toast.error('Vennligst skriv inn et passord');
+    res.status(400).send("Vennligst skriv inn et passord");
+    return;
   }
 
   try {
