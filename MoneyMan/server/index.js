@@ -28,6 +28,17 @@ app.use(express.static("build"));
 
 app.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
+  username = username.toLowerCase();
+
+  if (username === '') {
+    toast.error('Vennligst skriv inn et brukernavn');
+  } else if (username.split('').includes(' ')) {
+    toast.error("DU KAN IKKE HA MELLOMROM I BRUKERNAVN!!!!!!!!!!!!!!!");
+  } else if (email === '') {
+    toast.error('Vennligst skriv inn en email');
+  } else if (password === '') {
+    toast.error('Vennligst skriv inn et passord');
+  }
 
   try {
     const existingUser = await User.findOne({ username });
