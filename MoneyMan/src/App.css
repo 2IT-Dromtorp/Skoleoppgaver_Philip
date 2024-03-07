@@ -1,242 +1,237 @@
+input {
+  font-size: 1em !important;
+  outline: none !important;
+}
+
+button {
+  font-size: 1em !important;
+}
+
+a {
+  font-size: 1em !important;
+  color: #000;
+}
+
 span {
-  font-size: 1em;
+  font: 1em !important;
 }
 
 #root {
   display: flex;
   flex-direction: column;
-  min-height: 100svh;
-  background: #FFF;
+  min-height: 100vh;
 }
 
 #outlet {
+  align-items: center;
+  justify-content: center;
   display: flex;
   flex-grow: 1;
 }
 
 #mainWindow {
-  flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
 }
+
+/* NAVBAR STYLING */
 
 #navbar {
-  display: flex;
-  padding: 1em;
   position: sticky;
-  justify-content: space-between;
-  align-items: center;
   top: 0;
-  z-index: 9;
-  background: #FFF;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1em;
 }
 
-#blueLink {
-  color: #142C8E;
-  text-decoration: none;
-}
-
-#blueLink:hover {
-  text-decoration: underline;
-}
-
-#leftRegion {
+#navbar #leftRegion {
   display: flex;
   align-items: center;
 }
 
-#rightRegion {
-  justify-content: center;
-  display: flex;
-  align-items: center;
+#navbar #rightRegion {
   gap: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#link {
-  color: #000;
+#navbar #link {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 1em 0 1em;
   text-decoration: none;
-  cursor: pointer;
 }
 
-#link:hover {
-  text-decoration: underline;
-}
-
-#logo {
-  height: 2em;
-}
-
-/*LOGIN & SIGNUP STYLING*/
+/* LOGIN STYLING */
 
 #loginSection {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1em;
-  background: #FFF;
-  box-shadow: #000 0 0 5px 0;
-  padding: 1em;
-  border-radius: 1em;
-  width: 30%;
+  gap: 8px;
   flex-direction: column;
+  padding: 1em;
+  width: 38%;
 }
 
 #inputWrapper {
-  position: relative;
-  z-index: 2;
+  display: flex;
   width: 100%;
+  flex-direction: column;
+  gap: 4px;
 }
 
-#inputWrapper input {
-  outline: none;
-  border: solid 2px #00000030;
+#loginSection #inputWrapper input {
+  border: solid 2px #B5B5B5;
+  padding: 1em;
+  background: #FFF;
+  border-radius: 8px;
   width: 100%;
   box-sizing: border-box;
-  border-radius: 4px;
-  padding: 1em;
-  font-size: 1em;
   transition: .5s;
 }
 
-#inputWrapper input:focus {
+#loginSection #inputWrapper input:focus {
   border: solid 2px #142C8E;
 }
 
 #submitButton {
-  text-align: center;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 50px;
-  padding: .65em;
-  font-size: 1em;
-  text-decoration: none;
+  padding: 1em;
+  border: none;
+  outline: none;
   background: #142C8E;
-  border: solid 1px #142C8E;
-  font-weight: 800;
+  font-weight: 700;
   color: #FFF;
+  border-radius: 100px;
+  width: 100%;
+  box-sizing: border-box;
   cursor: pointer;
 }
 
 #signupLink {
-  text-align: center;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 50px;
-  padding: .65em;
-  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  border: solid 2px #142C8E;
+  outline: none;
   text-decoration: none;
+  font-weight: 700;
   background: #FFF;
-  border: solid 1px #142C8E;
-  font-weight: 800;
   color: #142C8E;
+  border-radius: 100px;
+  width: 100%;
+  box-sizing: border-box;
   cursor: pointer;
+}
+
+#blueLink {
+  color: #142C8E;
+}
+
+@media only screen and (max-width: 600px) {
+
+  #loginSection {
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 10em;
+  }
 }
 
 /* ACCOUNT STYLING */
 
 #account {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1em;
-  background: #FFF;
-  box-shadow: #000 0 0 5px 0;
+  width: 80%;
   padding: 1em;
-  border-radius: 1em;
-  width: 90%;
-  flex-direction: column;
+  box-sizing: border-box;
 }
 
 #accountData {
-  justify-content: space-between;
+  display: flex;
   width: 100%;
-  height: 50vh;
-  display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-#left {
-  display: flex;
-  gap: 8px;
-  flex-direction: column;
+#accountData #left {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-#right {
+#accountData #right {
+  width: 50%;
   display: flex;
-  gap: 8px;
   flex-direction: column;
-  width: 30%;
+  gap: 4px;
 }
 
 #header {
   font-weight: 700;
-  font-size: 1em;
 }
 
 #currency {
-  font-weight: 350;
-  font-size: 3em;
+  font-weight: 300;
+  font-size: 2em;
 }
 
 #userSearchBox {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  border: solid 2px #B5B5B5;
+  border-radius: 8px;
+  background: #FFF;
 }
 
 #userSearch {
-  box-sizing: border-box;
+  border-radius: 8px;
+  border: none;
   padding: 1em;
-  border-radius: 4px;
-  border: solid 2px #00000030;
-  transition: .5s;
-}
-
-#userSearch:focus {
-  outline: none;
-  border: solid 2px #142C8E;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 #userList {
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-}
-
-#userList ul {
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 #userList li {
-  padding: 8px 0 8px 1em;
-  list-style: none;
-  border: solid 2px #00000030;
-  border-radius: 4px;
-  transition: .5s;
+  padding: 1em;
   cursor: pointer;
 }
 
 #transferBox {
-  box-sizing: border-box;
+  border-radius: 8px;
+  border: solid 2px #B5B5B5;
   padding: 1em;
-  border-radius: 4px;
-  border: solid 2px #00000030;
-  transition: .5s;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 #transferButton {
-  text-align: center;
   box-sizing: border-box;
   width: 100%;
-  border-radius: 50px;
-  padding: .65em;
-  font-size: 1em;
-  text-decoration: none;
-  background: #142C8E;
-  border: solid 1px #142C8E;
-  font-weight: 800;
+  background-color: #142C8E;
+  border-radius: 100px;
+  border: none;
   color: #FFF;
-  cursor: pointer;
+  padding: 1em;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 600px) {
+
+  #account {
+    width: 100%;
+    padding-bottom: 10em;
+  }
 }

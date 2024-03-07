@@ -6,7 +6,7 @@ function AccountPage({ isLoggedIn, username }) {
     const [searchResults, setSearchResults] = useState([]);
     const [showDropdown, setShowDropdown] = useState(false);
     const [users, setUsers] = useState([]);
-    const [transferAmount, setTransferAmount] = useState(0);
+    const [transferAmount, setTransferAmount] = useState("");
     const [recipient, setRecipient] = useState('');
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function AccountPage({ isLoggedIn, username }) {
                 console.error("Error fetching users:", err);
             });
         }
-    }, [isLoggedIn, username]);
+    }, [isLoggedIn, username])
 
     const handleSearch = (event) => {
         const inputValue = event.target.value;
@@ -85,8 +85,22 @@ function AccountPage({ isLoggedIn, username }) {
         .then((res) => {
             if(res.ok) {
                 alert('Transaksjon utført');
-                setTransferAmount(0);
-                setRecipient('');
+                setTransferAmount("");
+                fetch(`/currency?username=${username}`, {
+                    method: "GET",
+                }).then((res) => {
+                    if (res.ok) {
+                        return res.json();
+                    }
+                    throw new Error('Network response was not ok.');
+                }).then((data) => {
+                    setCurrency(data.currency);
+                }).catch((err) => {
+                    console.error("Error fetching currency:", err);
+                }).finally(() => {
+                    setRecipient('');
+                    setSearchInput('');
+                });
             } else {
                 throw new Error('Network response was not ok.');
             }
@@ -110,16 +124,16 @@ function AccountPage({ isLoggedIn, username }) {
                 <div id='accountData'>
                     <div id='left'>
                         <span id='header'>MoneyMan-saldo</span>
-                        <span id='currency'>{currency ? currency : '?'} MM</span>
+                        <span id='currency'>{currency ? currency : '0'} MM</span>
                         <span >Tilgjengelig saldo</span>
                     </div>
                     <div id='right'>
                         <span id='header'>Pengedeling</span>
                         <div id='userSearchBox'>
                             <input placeholder='Søk etter bruker' id='userSearch' type="text" value={searchInput} onChange={handleSearch} />
-                            {showDropdown && (
-                                <div id="userList">
-                                    <ul>
+                            {showDropdown && searchResults.length > 0 ? (
+                                <div>
+                                    <ul id="userList">
                                         {searchResults.map((result, index) => (
                                             <li key={index} onClick={() => handleRecipientSelection(result.username)}>
                                                 {result.username}
@@ -127,7 +141,7 @@ function AccountPage({ isLoggedIn, username }) {
                                         ))}
                                     </ul>
                                 </div>
-                            )}
+                            ) : undefined}
                         </div>
                         <input id='transferBox' type='number' value={transferAmount} onChange={(e) => setTransferAmount(Math.floor(parseFloat(e.target.value) * 100) * 0.01)}
                             placeholder="Enter amount"></input>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Outlet, Link, useNavigate } from "react-router-dom";
-import Logo from '../images/MoneyMan.png';
 
 function Layout({ isLoggedIn, username, handleLogout }) {
   const navigate = useNavigate();
@@ -14,13 +13,13 @@ function Layout({ isLoggedIn, username, handleLogout }) {
     <>
       <div id='navbar'>
         <div id='leftRegion'>
-          <Link to='/'><img id="logo" src={Logo} /></Link>
+          <Link to='/'>Logo</Link>
         </div>
         <div id='rightRegion'>
           {isLoggedIn ? (
             <>
               <Link id="link" to='/account'>Hei, @{username}</Link>
-              <a id='link' onClick={handleLogoutClick}>Logg ut</a>
+              <a id='link' href='' onClick={handleLogoutClick}>Logg ut</a>
             </>
           ) : (
             <Link id='link' to='/login'>Logg in</Link>

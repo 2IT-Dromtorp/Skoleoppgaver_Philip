@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Logo from '../images/MoneyMan.png';
 import { toast, Toaster } from 'react-hot-toast';
 
 function Signup() {
@@ -38,14 +37,10 @@ function Signup() {
   return (
     <div id="mainWindow">
       <div id="loginSection">
-        <img id="logo" src={Logo} alt='logo' />
+        Logo
         <div id="inputWrapper">
           <input placeholder="Brukernavn" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </div>
-        <div id="inputWrapper">
           <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div id="inputWrapper">
           <input placeholder="Passord" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <button type='button' onClick={handleSignUp} id="submitButton">
