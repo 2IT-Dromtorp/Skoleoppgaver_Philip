@@ -35,18 +35,15 @@ function Signup() {
   };
 
   return (
-    <div id="mainWindow">
-      <div id="loginSection">
-        Logo
-        <div id="inputWrapper">
-          <input placeholder="Brukernavn" value={username} onChange={(e) => setUsername(e.target.value)} />
-          <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <input placeholder="Passord" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <button type='button' onClick={handleSignUp} id="submitButton">
+    <div id='main_window'>
+      <div id='form'>
+        <input placeholder="Brukernavn" value={username} onChange={(e) => setUsername(e.target.value)} />
+        <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input placeholder="Passord" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <button type='button' onClick={handleSignUp}>
           Opprett bruker
         </button>
-        <Link id="blueLink" to="/login">Har du allerede en konto? Logg inn</Link>
+        <Link to="/login">Har du allerede en konto? Logg inn</Link>
       </div>
       <Toaster />
     </div>

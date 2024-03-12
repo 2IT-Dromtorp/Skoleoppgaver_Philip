@@ -2,7 +2,7 @@ import React from 'react'
 
 function Home() {
   return (
-    <div id='main'>Home - TBD</div>
+    <div id='main_window'>Home - TBD</div>
   )
 }
 

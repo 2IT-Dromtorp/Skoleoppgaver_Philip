@@ -82,33 +82,33 @@ function AccountPage({ isLoggedIn, username }) {
                 amount: transferAmount
             }),
         })
-        .then((res) => {
-            if(res.ok) {
-                alert('Transaksjon utført');
-                setTransferAmount("");
-                fetch(`/currency?username=${username}`, {
-                    method: "GET",
-                }).then((res) => {
-                    if (res.ok) {
-                        return res.json();
-                    }
+            .then((res) => {
+                if (res.ok) {
+                    alert('Transaksjon utført');
+                    setTransferAmount("");
+                    fetch(`/currency?username=${username}`, {
+                        method: "GET",
+                    }).then((res) => {
+                        if (res.ok) {
+                            return res.json();
+                        }
+                        throw new Error('Network response was not ok.');
+                    }).then((data) => {
+                        setCurrency(data.currency);
+                    }).catch((err) => {
+                        console.error("Error fetching currency:", err);
+                    }).finally(() => {
+                        setRecipient('');
+                        setSearchInput('');
+                    });
+                } else {
                     throw new Error('Network response was not ok.');
-                }).then((data) => {
-                    setCurrency(data.currency);
-                }).catch((err) => {
-                    console.error("Error fetching currency:", err);
-                }).finally(() => {
-                    setRecipient('');
-                    setSearchInput('');
-                });
-            } else {
-                throw new Error('Network response was not ok.');
-            }
-        })
-        .catch((err) => {
-            console.error('Error:', err);
-            alert('Noe gikk galt');
-        });
+                }
+            })
+            .catch((err) => {
+                console.error('Error:', err);
+                alert('Noe gikk galt');
+            });
     }
 
     const handleRecipientSelection = (selectedRecipient) => {
@@ -118,22 +118,22 @@ function AccountPage({ isLoggedIn, username }) {
     };
 
     return (
-        <div id='mainWindow'>
-            <div id='account'>
+        <div id='main_window'>
+            <div id="account">
                 <h1>@{username}</h1>
-                <div id='accountData'>
-                    <div id='left'>
+                <div id='account_data'>
+                    <div id='account_left_region'>
                         <span id='header'>MoneyMan-saldo</span>
                         <span id='currency'>{currency ? currency : '0'} MM</span>
                         <span >Tilgjengelig saldo</span>
                     </div>
-                    <div id='right'>
+                    <div id='account_right_region'>
                         <span id='header'>Pengedeling</span>
-                        <div id='userSearchBox'>
-                            <input placeholder='Søk etter bruker' id='userSearch' type="text" value={searchInput} onChange={handleSearch} />
+                        <div id="user_search_box">
+                            <input placeholder='Søk etter bruker' type="text" value={searchInput} onChange={handleSearch} />
                             {showDropdown && searchResults.length > 0 ? (
                                 <div>
-                                    <ul id="userList">
+                                    <ul>
                                         {searchResults.map((result, index) => (
                                             <li key={index} onClick={() => handleRecipientSelection(result.username)}>
                                                 {result.username}
@@ -143,9 +143,9 @@ function AccountPage({ isLoggedIn, username }) {
                                 </div>
                             ) : undefined}
                         </div>
-                        <input id='transferBox' type='number' value={transferAmount} onChange={(e) => setTransferAmount(Math.floor(parseFloat(e.target.value) * 100) * 0.01)}
+                        <input id='currency_transfer' type='number' value={transferAmount} onChange={(e) => setTransferAmount(Math.floor(parseFloat(e.target.value) * 100) * 0.01)}
                             placeholder="Enter amount"></input>
-                        <button id='transferButton' onClick={transferCurrency}>Send penger</button>
+                        <button onClick={transferCurrency}>Send penger</button>
                     </div>
                 </div>
             </div>

@@ -11,18 +11,18 @@ function Layout({ isLoggedIn, username, handleLogout }) {
 
   return (
     <>
-      <div id='navbar'>
-        <div id='leftRegion'>
+      <div id='navbar_top'>
+        <div id='navbar_left_region'>
           <Link to='/'>Logo</Link>
         </div>
-        <div id='rightRegion'>
+        <div id='navbar_right_region'>
           {isLoggedIn ? (
             <>
-              <Link id="link" to='/account'>Hei, @{username}</Link>
-              <a id='link' href='' onClick={handleLogoutClick}>Logg ut</a>
+              <Link to='/account'>Hei, @{username}</Link>
+              <a href='' onClick={handleLogoutClick}>Logg ut</a>
             </>
           ) : (
-            <Link id='link' to='/login'>Logg in</Link>
+            <Link to='/login'>Logg in</Link>
           )}
         </div>
       </div>

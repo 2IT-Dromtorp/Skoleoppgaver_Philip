@@ -1,0 +1,197 @@
+/* prevent input zoom on iOS */
+
+* {
+  color: #FFF;
+}
+
+p {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+input {
+  font-size: 1em !important;
+  outline: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  color: #000 !important;
+}
+
+button {
+  font-size: 1em !important;
+  outline: none !important;
+  width: 100% !important;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+
+/* Page styling */
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #0C0C0C;
+}
+
+#outlet {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-grow: 1;
+}
+
+#main_window {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#navbar_top {
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+#navbar_top #navbar_right_region {
+  display: flex;
+  gap: 1em;
+}
+
+/* invidividual pages styling */
+
+/* sign up and login page */
+
+#form {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  gap: 8px;
+}
+
+#form input {
+  padding: 1em;
+  border: solid 2px #D4D4D4;
+  border-radius: 8px;
+  transition: .5s;
+}
+
+#form input:focus {
+  border: solid 2px steelblue;
+}
+
+#form button {
+  padding: 1em;
+  border: none;
+  background: steelblue;
+  color: #FFF;
+  font-weight: 700;
+  border-radius: 100px;
+}
+
+/* account styling */
+
+#account {
+  display: flex;
+  width: 70vw;
+  padding: 1em;
+  gap: 1em;
+  align-items: center;
+  flex-direction: column;
+}
+
+#account_data {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+#account_left_region  {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+#account_right_region {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+#header {
+  font-weight: 700;
+}
+
+#currency {
+  font-size: 2em;
+  font-weight: 300;
+}
+
+#user_search_box {
+  background: #FFF;
+  border: solid 2px #D4D4D4;
+  border-radius: 8px;
+}
+
+#user_search_box input {
+  background: none;
+  padding: 1em;
+  border: none;
+}
+
+#user_search_box ul {
+  align-items: center;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+}
+
+#user_search_box li {
+  padding: 1em;
+  box-sizing: border-box;
+  width: 98%;
+  border-radius: 10px;
+  color: #000;
+  cursor: pointer;
+  transition: .5s;
+}
+
+#user_search_box li:hover {
+  background: #D4D4D4;
+}
+
+#currency_transfer {
+  padding: 1em;
+  border: solid 2px #D4D4D4 !important;
+  border-radius: 8px;
+  transition: .5s;
+}
+
+#currency_transfer:focus {
+  border: solid 2px steelblue !important;
+}
+
+#account_right_region button {
+  padding: 1em;
+  border: none;
+  background: steelblue;
+  color: wheat;
+  font-weight: 700;
+  border-radius: 100px;
+}

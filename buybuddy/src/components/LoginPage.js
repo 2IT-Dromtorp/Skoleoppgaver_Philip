@@ -23,7 +23,7 @@ function Login({ handleLogin }) {
       if (response.ok) {
         handleLogin(username);
         toast.success('Logged in successfully');
-        setTimeout (() => {
+        setTimeout(() => {
           navigate('/account');
         }, 2000);
       } else {
@@ -36,16 +36,13 @@ function Login({ handleLogin }) {
   };
 
   return (
-    <div id="mainWindow">
-      <div id='loginSection'>
-        Logo
-        <div id='inputWrapper'>
-          <input type='text' placeholder='Brukernavn' value={username} onChange={(e) => setUsername(e.target.value)} />
-          <input type='password' placeholder='Passord' value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <button type='button' id='submitButton' onClick={handleSubmit}>Logg på</button>
+    <div id='main_window'>
+      <div id='form'>
+        <input type='text' placeholder='Brukernavn' value={username} onChange={(e) => setUsername(e.target.value)} />
+        <input type='password' placeholder='Passord' value={password} onChange={(e) => setPassword(e.target.value)} />
+        <button type='button' onClick={handleSubmit}>Logg på</button>
         <span>eller</span>
-        <Link id='signupLink' to='/signup'>Opprett bruker</Link>
+        <Link to='/signup'>Opprett bruker</Link>
       </div>
       <Toaster />
     </div>
