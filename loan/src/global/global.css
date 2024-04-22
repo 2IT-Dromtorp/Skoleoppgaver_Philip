@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+}
+
+* {
+    color: #FFF;
+    font-family: ;
+}
+
+#root {
+    min-height: 100svh;
+    background: #000;
+}
+
+#navbar-container {
+    position: sticky;
+    padding: 8px;
+}

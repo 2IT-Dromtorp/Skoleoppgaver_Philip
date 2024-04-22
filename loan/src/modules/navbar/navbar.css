@@ -1,0 +1,14 @@
+#navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #00000075;
+    border: 1px solid #212c33;
+    backdrop-filter: blur(5px);
+    padding: 8px 1em;
+    border-radius: 10em;
+}
+
+#logo-navbar {
+    height: 48px;
+}
