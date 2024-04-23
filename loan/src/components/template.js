@@ -5,9 +5,7 @@ import Navbar from '../modules/navbar/navbar.js'
 function Template() {
     return (
         <div id='window'>
-            <div id='navbar-container'>
-                <Navbar />
-            </div>
+            <Navbar />
             <Outlet />
         </div>
     )

@@ -1,0 +1,42 @@
+#globalnav {
+    padding: 0 1em;
+    height: 48px;
+    display: flex;
+    backdrop-filter: blur(10px);
+}
+
+#globalnav-content {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.globalnav-item {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#shield, #dropdown {
+    width: 16px;
+}
+
+#list {
+    height: 48px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+button {
+    background: none;
+    border: none;
+    appearance: none;
+}

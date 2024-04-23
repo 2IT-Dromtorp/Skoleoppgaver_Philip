@@ -1,21 +1,33 @@
 import React from 'react';
-import Logo from '../../assets/Viken.svg';
+import Shield from '../../assets/Viken.svg';
+import User from '../../assets/person-fill.svg';
+import Dropdown from '../../assets/dropdown.svg'
+import { Link } from 'react-router-dom';
+import './/globalnav.css';
 
 
 function Navbar() {
+
   return (
-    <div id='navbar'>
-      <div id='logo'>
-        <img id='logo-navbar' src={Logo} />
-        <span>Viken</span>
+    <nav id='globalnav'>
+      <div id='globalnav-content'>
+        <Link className='globalnav-item' to='/'>
+          <img id='shield' src={Shield} alt='shield' />
+        </Link>
+        <ul id='list'>
+          <li>
+            <Link className='globalnav-item' to='/account'>
+              <img id='user' src={User} alt='user' />
+            </Link>
+          </li>
+          <li>
+            <button className='globalnav-item #dropdown-menu'>
+              <img id='dropdown' src={Dropdown} alt='dropdown' />
+            </button>
+          </li>
+        </ul>
       </div>
-      <div id='pages'>
-
-      </div>
-      <div id='user'>
-
-      </div>
-    </div>
+    </nav >
   )
 }
 
