@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-2.31.1.min.js" charset="utf-8"></script>
+    <title>Plotly JS Visualization</title>
+</head>
+
+<body>
+    <div id="window">
+        <div id="header">
+            <div id="input-field">
+                <input type="text" id="temperature" placeholder="Skriv inn temperatur">
+                <button id="updateButton">Update Color</button>
+                <input id="file" type="file">
+            </div>
+            <div id="temp">
+                <span>Temperatur Verdier:</span>
+                <span>0-15 - Rød</span>
+                <span>16-21 - Gul</span>
+                <span>22+ - Grønn</span>
+            </div>
+        </div>
+        <div id="scene"></div>
+    </div>
+    <script>
+        var aspectX, aspectY, aspectZ;
+
+        function handleFileSelect(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (event) {
+                var data = JSON.parse(event.target.result);
+                x = data.x;
+                y = data.y;
+                z = data.z;
+                i = data.i;
+                j = data.j;
+                k = data.k;
+
+                var minX = Math.min(...x);
+                var maxX = Math.max(...x);
+                var minY = Math.min(...y);
+                var maxY = Math.max(...y);
+                var minZ = Math.min(...z);
+                var maxZ = Math.max(...z);
+
+                aspectX = maxX - minX;
+                aspectY = maxY - minY;
+                aspectZ = maxZ - minZ;
+
+                var objectName = data.object_name;
+
+                updateColor(objectName);
+            };
+
+            reader.readAsText(file);
+        }
+
+        var fileInput = document.querySelector('input[type="file"]');
+        fileInput.addEventListener('change', handleFileSelect);
+
+        function updateColor(objectName) {
+            var temperature = document.getElementById("temperature").value;
+            var color = temperature;
+
+            if (temperature <= "15") {
+                color = "red"
+            } else if (temperature >= 15 && temperature < 22) {
+                color = "orange"
+            } else {
+                color = "green"
+            }
+
+            var data = [{
+                opacity: 1,
+                color: color,
+                type: 'mesh3d',
+                x: x,
+                y: y,
+                z: z,
+                i: i,
+                j: j,
+                k: k,
+                flatshading: true
+            }];
+
+            var layout = {
+                width: 1200,
+                height: 1200,
+                paper_bgcolor: "transparent",
+                hovermode: false,
+                title: objectName,
+                scene: {
+                    aspectmode: 'manual',
+                    aspectratio: {
+                        x: aspectX,
+                        y: aspectY,
+                        z: aspectZ
+                    },
+                    camera: {
+                        eye: { x: 1.25, y: 1.25, z: 1.25 }
+                    }
+                },
+                titlefont: {
+                    color: '#FFF'
+                }
+            };
+
+            Plotly.newPlot('scene', data, layout);
+        }
+
+        function handleUpdateButtonClick() {
+            updateColor();
+        }
+
+        function handleTemperatureInputKeyPress(event) {
+            if (event.key === "Enter") {
+                updateColor();
+            }
+        }
+
+        var temperatureInput = document.getElementById("temperature");
+        var updateButton = document.getElementById("updateButton");
+
+        temperatureInput.addEventListener("keypress", handleTemperatureInputKeyPress);
+        updateButton.addEventListener("click", handleUpdateButtonClick, { passive: true });
+
+        updateColor();
+    </script>
+</body>
+
+</html>
