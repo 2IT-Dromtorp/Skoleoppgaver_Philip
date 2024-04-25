@@ -3,7 +3,7 @@ body {
 }
 
 * {
-    color: #000;
+    color: #FFF;
     text-decoration: none;
     font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -17,5 +17,10 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    background: #FFF;
+    background: #000;
+}
+
+#form-link {
+    color: #0070BA;
+    text-decoration: underline;
 }

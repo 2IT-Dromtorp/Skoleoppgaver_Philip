@@ -2,10 +2,10 @@
     font-size: 1em;
 }
 
-#fancy-input {
+.fancy-input {
     display: flex;
     height: 60px;
-    width: 200px;
+    width: 250px;
 }
 
 #input-content {
@@ -15,33 +15,36 @@
     flex: 1;
     background: #FFF;
     border-radius: 4px;
-    border: 2px solid transparent;
     transition: .25s;
 }
 
-#input-content.focused {
-    border: 2px solid #0070BA;
-}
-
-
-#field {
+.field {
     box-sizing: border-box;
     width: 100%;
     border: none;
     background: transparent;
     outline: none;
+    color: #000;
 }
 
-#placeholder {
+.placeholder {
     position: absolute;
-    transition: top 0.3s, font-size 0.3s;
-    top: 44%;
-    left: 9%;
+    transition: .25s;
+    top: 24.5px;
+    left: 18px;
     pointer-events: none;
+    color: #7D7D7F;
 }
 
-#input-content.focused #placeholder {
+#input-content.focused .placeholder {
     top: 10%;
     font-size: 0.8em;
-    color: #1D1D1F;
+    color: #7D7D7F;
+}
+
+#pweye {
+    position: absolute;
+    top: 20px;
+    height: 24px;
+    left: 82%;
 }

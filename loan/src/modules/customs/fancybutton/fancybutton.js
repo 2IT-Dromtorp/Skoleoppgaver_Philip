@@ -1,10 +1,10 @@
 import React from 'react'
 import './fancybutton.css'
 
-function FancyButton({ name }) {
+function FancyButton({ name, onClick }) {
   return (
     <div id='fancy-button'>
-        <button id='button'>{name}</button>
+        <button id='button' onClick={onClick}>{name}</button>
     </div>
   )
 }
