@@ -1,0 +1,11 @@
+.container {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    background: #FFF;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+}

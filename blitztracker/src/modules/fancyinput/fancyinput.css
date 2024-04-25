@@ -1,0 +1,43 @@
+* {
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+#fancyinput {
+    display: flex;
+    width: 300px;
+    height: 50px;
+}
+
+#fancyinput-content {
+    position: relative;
+    display: flex;
+    padding: 1em 0 4px 1em;
+    flex: 1;
+    background: #FFF;
+}
+
+.field {
+    display: flex;
+    flex: 1;
+    outline: none;
+    background: none;
+    border: none;
+    padding: 0;
+    color: #1D1D1F;
+}
+
+.placeholder {
+    position: absolute;
+    transition: .25s;
+    top: 19px;
+    left: 16px;
+    pointer-events: none;
+    color: #1D1D1F;
+}
+
+#fancyinput-content.focused .placeholder {
+    top: 4px;
+    font-size: .75em;
+    color: #8B8B92;
+}
