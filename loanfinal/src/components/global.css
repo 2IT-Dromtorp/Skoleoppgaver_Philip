@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+}
+
+* {
+    font-family: Lato;
+}
+
+#root {
+    display: flex;
+    min-height: 100vh;
+}
+
+#template {
+    background: #21232C;
+    flex: 1;
+}
