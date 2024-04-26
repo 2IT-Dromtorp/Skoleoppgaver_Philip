@@ -22,7 +22,7 @@ function FancyInput({ placeholder, type, value, onChange }) {
         <div id='fancyinput'>
             <div id='fancyinput-content' className={focused || value ? 'fancyinput-content-focused' : ''}>
                 <input
-                value={value}className='field' type={type} onFocus={handleFocus} onBlur={handleBlur} onChange={handleChange} />
+                value={value}className='field' required type={type} onFocus={handleFocus} onBlur={handleBlur} onChange={handleChange} />
                 <span className='placeholder'>{placeholder}</span>
             </div>
         </div>

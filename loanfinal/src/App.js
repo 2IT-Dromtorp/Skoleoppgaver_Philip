@@ -1,17 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 import Template from "./components/pages/template";
 import Landing from "./components/pages/landing";
-import Loan from "./components/pages/loan";
+import Loan from "./components/pages/loan/loan";
 import Login from "./components/pages/login/login";
 import Signup from "./components/pages/signup/signup";
-import Account from "./components/pages/account";
+import Account from "./components/pages/account/account";
 import '../src/components/global.css';
 
 function App() {
-
-  const [loggedIn, setLoggedIn] = useState(false);
-
   return (
     <BrowserRouter>
       <Routes>

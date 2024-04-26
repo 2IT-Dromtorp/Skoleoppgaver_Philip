@@ -1,53 +1,37 @@
 import React, { useState } from 'react';
 import FancyInput from '../../modules/fancyinput/fancyinput';
+import { Link, useNavigate } from 'react-router-dom';
 
-function Login() {
-    const [email, setEmail] = useState('');
+function Login({ setEmail, setLoggedIn }) {
+    const [email, setEmailState] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const logIn = async () => {
-        const body = JSON.stringify({
-            email: email,
-            password: password
-        });
-
-        fetch('/api/v1/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: body
-        })
-            .then(response => response.json())
-            .then(data => {
-                setMessage(data.message);
-            })
-            .catch(error => {
-                setMessage('Failed to log in');
-                console.error('Error:', error);
-            });
-    };
+    }
 
     const handleEmail = (event) => {
-        setEmail(event.target.value);
+        setEmailState(event);
     };
 
     const handlePassword = (event) => {
-        setPassword(event.target.value);
+        setPassword(event);
     };
 
     return (
         <div className='login'>
-
             <div className='form'>
                 <FancyInput type='text' placeholder='Email' value={email} onChange={handleEmail} />
                 <FancyInput type='password' placeholder='Password' value={password} onChange={handlePassword} />
                 <button onClick={logIn}>Log in</button>
                 <div>{message}</div>
             </div>
+            <div>
+                <Link to="/signup">Sign Up</Link>
+            </div>
         </div>
     )
 }
 
-export default Login
+export default Login;
