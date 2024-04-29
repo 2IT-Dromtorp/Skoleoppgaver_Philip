@@ -1,0 +1,43 @@
+#dropdown {
+    position: relative;
+    display: flex;
+    height: 50px;
+    width: 250px;
+}
+
+#content {
+    flex: 1;
+    padding: 1em;
+    background: #FFF;
+    cursor: pointer;
+}
+
+#options {
+    top: 100%;
+    z-index: 999;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: absolute;
+    background: #FFF;
+    display: none;
+}
+
+#dropdown.active #options {
+    display: block;
+}
+
+#item {
+    padding: 8px 1em;
+    width: 100%;
+    background: #FFF;
+    cursor: pointer;
+}
+
+#placeholder.dropdown {
+    top: 3px;
+    font-size: .75em;
+    color: #8B8B92;
+    position: absolute;
+}

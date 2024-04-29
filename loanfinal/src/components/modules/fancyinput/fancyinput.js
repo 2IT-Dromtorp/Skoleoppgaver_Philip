@@ -19,11 +19,11 @@ function FancyInput({ placeholder, type, value, onChange }) {
     };
 
     return (
-        <div id='fancyinput'>
-            <div id='fancyinput-content' className={focused || value ? 'fancyinput-content-focused' : ''}>
+        <div id='input'>
+            <div id='content' className={focused || value ? 'content-focused' : ''}>
                 <input
-                value={value}className='field' required type={type} onFocus={handleFocus} onBlur={handleBlur} onChange={handleChange} />
-                <span className='placeholder'>{placeholder}</span>
+                value={value} id='field' required type={type} onFocus={handleFocus} onBlur={handleBlur} onChange={handleChange} />
+                <span id='placeholder'>{placeholder}</span>
             </div>
         </div>
     )

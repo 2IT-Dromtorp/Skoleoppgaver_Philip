@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FancyInput from '../../modules/fancyinput/fancyinput';
+import FancyButton from '../../modules/fancybutton/fancybutton';
+import './login.css';
 import { Link, useNavigate } from 'react-router-dom';
 
-function Login({ setEmail, setLoggedIn }) {
+function Login({ setLoggedIn, setEmail, setId }) {
+    useEffect(() => {
+        document.title = 'Login';
+    }, []);
+
     const [email, setEmailState] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
-    const logIn = async () => {
-    }
+    const isValidEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const isValidPassword = (password) => {
+        const passwordRegex = /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-|]+$/;
+        return passwordRegex.test(password);
+    };
 
     const handleEmail = (event) => {
         setEmailState(event);
@@ -20,15 +33,13 @@ function Login({ setEmail, setLoggedIn }) {
     };
 
     return (
-        <div className='login'>
+        <div className='window' id='login'>
             <div className='form'>
                 <FancyInput type='text' placeholder='Email' value={email} onChange={handleEmail} />
                 <FancyInput type='password' placeholder='Password' value={password} onChange={handlePassword} />
-                <button onClick={logIn}>Log in</button>
-                <div>{message}</div>
-            </div>
-            <div>
-                <Link to="/signup">Sign Up</Link>
+                <FancyButton name='Login' />
+                <Link to="/signup" id='link'>Sign Up</Link>
+                <span>{message}</span>
             </div>
         </div>
     )

@@ -3,21 +3,21 @@
     box-sizing: border-box;
 }
 
-#fancyinput {
+#input {
     display: flex;
     width: 250px;
     height: 50px;
 }
 
-#fancyinput-content {
+#content {
     position: relative;
     display: flex;
-    padding: 1em 0 4px 1em;
+    padding: 1em 0 1em 1em;
     flex: 1;
     background: #FFF;
 }
 
-.field {
+#field {
     display: flex;
     flex: 1;
     outline: none;
@@ -27,17 +27,18 @@
     color: #1D1D1F;
 }
 
-.placeholder {
+#placeholder {
     position: absolute;
     transition: .25s;
-    top: 19px;
+    top: 14.5px;
     left: 16px;
     pointer-events: none;
     color: #1D1D1F;
+    text-align: center;
 }
 
-#fancyinput-content.fancyinput-content-focused .placeholder {
-    top: 4px;
+#content.content-focused #placeholder {
+    top: 2px;
     font-size: .75em;
     color: #8B8B92;
 }
