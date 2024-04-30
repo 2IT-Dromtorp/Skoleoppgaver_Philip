@@ -1,16 +1,19 @@
 #signup.window {
+    flex: 1;
     display: flex;
     flex-direction: row;
-    flex: 1;
 }
 
 #signup.left-aside {
-    background: green;
     flex: 1;
+    background: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #signup.right-aside {
-    width: 30%;
+    width: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,6 +22,12 @@
 #signup.form {
     display: flex;
     flex-direction: column;
-    gap: 8px;
     align-items: center;
+    gap: 12px;
+    padding: 1em;
+}
+
+.title-2em {
+    font-size: 2em;
+    color: #FFF;
 }

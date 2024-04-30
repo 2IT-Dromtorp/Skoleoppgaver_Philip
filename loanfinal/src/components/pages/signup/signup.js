@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
 import FancyInput from '../../modules/fancyinput/fancyinput';
 import FancyDropdown from '../../modules/fancydropdown/fancydropdown';
 import FancyButton from '../../modules/fancybutton/fancybutton';
@@ -8,13 +8,10 @@ import './signup.css';
 
 function Signup() {
 
-    useEffect(() => {
-        document.title = 'Sign up';
-    }, []);
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [selectedOption, setSelectedOption] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
 
     const handleEmail = (event) => {
         setEmail(event);
@@ -28,50 +25,31 @@ function Signup() {
         setSelectedOption(option);
     };
 
-    const isValidEmail = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
-    const isValidPassword = (password) => {
-        const passwordRegex = /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-|]+$/;
-        return passwordRegex.test(password);
-    };
-
-    const navigate = useNavigate();
-
-    const createUser = () => {
-        if (email === '' || password === '' || selectedOption === '') {
-            return;
-        }
-        if (!isValidEmail(email)) {
-            return;
-        }
-        if (!isValidPassword(password)) {
-            return;
-        }
-        fetch('/api/v1/createuser', {
+    const doSignup = () => {
+        const body = JSON.stringify({
+            email: email,
+            password: password,
+            role: selectedOption
+        });
+        console.log(body);
+        fetch('/api/v1/accounts/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-                role: selectedOption
-            })
+            body: body
         })
-            .then(response => {
-                if (response.ok) {
-                    setEmail('');
-                    setPassword('');
-                    setSelectedOption('');
-                    setInterval(() => navigate('/login'), 1000);
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.success) {
+                    setErrorMsg('Account created')
+                } else {
+                    setErrorMsg(data.message);
                 }
-                return response.json();
-            })
-            .then(data => console.log(data))
-            .catch(error => console.error('Error creating user:', error));
+            }).catch((err) => {
+                console.error('Error:', err);
+            });
     };
 
     return (
@@ -80,11 +58,13 @@ function Signup() {
             </div>
             <div className='right-aside' id='signup'>
                 <div className='form' id='signup'>
+                    <span className='title-2em'>Sign up</span>
                     <FancyInput type='text' placeholder='Email' value={email} onChange={handleEmail} />
                     <FancyInput type='password' placeholder='Password' value={password} onChange={handlePassword} />
                     <FancyDropdown placeholder='Role' options={['Student', 'Teacher', 'System Administrator']} selectedOption={selectedOption} onSelect={handleSelectOption} />
-                    <FancyButton onClick={createUser} name='Create user' />
-                    <Link to='/login' id='link'>Already have an account? Log in</Link>
+                    <FancyButton onClick={doSignup} name='Create user' />
+                    <Link to='/login' className='link'>Already have an account? Log in</Link>
+                    <span>{errorMsg}</span>
                 </div>
             </div>
         </div>

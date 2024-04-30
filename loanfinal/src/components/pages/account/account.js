@@ -1,8 +1,9 @@
 import React from 'react'
+import './account.css'
 
 function Account() {
   return (
-    <div>Account</div>
+    <div className='window'>e</div>
   )
 }
 

@@ -14,69 +14,53 @@ const POOL = mysql.createPool({
     database: 'loandb'
 });
 
-const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-};
-
-const isValidPassword = (password) => {
-    const passwordRegex = /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-|]+$/;
-    return passwordRegex.test(password);
-};
-
-app.post('/api/v1/createuser', (req, res) => {
+app.post('/api/v1/accounts/create', (req, res) => {
     const { email, password, role } = req.body;
-    if (email === '' || password === '' || !role) {
-        return res.status(400).send('Missing required fields');
-    }
-    if (!isValidEmail(email) || !isValidPassword(password)) {
-        return res.status(400).send('Invalid email or password');
+
+    if (!email || !password || !role) {
+        return res.status(400).json({ success: false, message: 'Please provide email, password, and role' });
     }
     POOL.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
         if (err) {
-            console.error('Error checking user:', err);
-            return res.status(500).send('Error checking user');
+            return res.status(500).json({ success: false, message: 'Internal server error' });
         }
-
         if (results.length > 0) {
-            return res.status(409).send('Email already exists');
+            return res.status(409).json({ success: false, message: 'Email already exists' });
         }
-        POOL.query('INSERT INTO users (email, password, role) VALUES (?, ?, ?)', [email, password, role], (err, results) => {
-            if (err) {
-                console.error('Error creating user:', err);
-                return res.status(500).send('Error creating user');
+        POOL.query('INSERT INTO users (email, password, role) VALUES (?, ?, ?)', [email, password, role], (insertErr, insertResults) => {
+            if (insertErr) {
+                return res.status(500).json({ success: false, message: 'Internal server error' });
             }
-            res.status(201).json({ message: 'User created successfully' });
+            res.status(201).json({ success: true, message: 'User created successfully' });
         });
     });
 });
 
-app.post('/api/v1/login', (req, res) => {
+app.post('/api/v1/accounts/login', (req, res) => {
     const { email, password } = req.body;
-    if (email === '' || password === '') {
-        return res.status(400).send('Missing required fields');
+
+    if (!email || !password) {
+        return res.status(400).json({ success: false, message: 'Please provide email and password' });
     }
-    if (!isValidEmail(email) || !isValidPassword(password)) {
-        return res.status(400).send('Invalid email or password');
-    }
-    POOL.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+
+    POOL.query('SELECT user_id, email FROM users WHERE email = ? AND password = ?', [email, password], (err, results) => {
         if (err) {
-            console.error('Error checking user:', err);
-            return res.status(500).send('Error checking user');
+            return res.status(500).json({ success: false, message: 'Internal server error' });
         }
         if (results.length === 0) {
-            return res.status(404).send('User not found');
+            return res.status(401).json({ success: false, message: 'Invalid email or password' });
         }
-        if (results[0].password !== password) {
-            return res.status(401).send('Invalid password');
-        }
-        res.status(200).json({ message: 'Login successful' });
+
+        const user = results[0];
+        const user_id = user.user_id;
+
+        res.status(200).json({ success: true, message: 'Login successful', user_id: user_id });
     });
 });
 
 app.get('/api/v1/users', (req, res) => {
-    POOL.query('SELECT * FROM users', (err, results) => {
-        res.json(results);
+    POOL.query('SELECT user_id, email, role FROM users', (err, results) => {
+        res.send(results);
     });
 });
 

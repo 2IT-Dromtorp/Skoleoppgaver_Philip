@@ -4,25 +4,12 @@ import FancyButton from '../../modules/fancybutton/fancybutton';
 import './login.css';
 import { Link, useNavigate } from 'react-router-dom';
 
-function Login({ setLoggedIn, setEmail, setId }) {
-    useEffect(() => {
-        document.title = 'Login';
-    }, []);
+function Login() {
+
+    const navigate = useNavigate();
 
     const [email, setEmailState] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
-    const navigate = useNavigate();
-
-    const isValidEmail = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
-    const isValidPassword = (password) => {
-        const passwordRegex = /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-|]+$/;
-        return passwordRegex.test(password);
-    };
 
     const handleEmail = (event) => {
         setEmailState(event);
@@ -32,14 +19,41 @@ function Login({ setLoggedIn, setEmail, setId }) {
         setPassword(event);
     };
 
+    const doLogin = () => {
+        const body = JSON.stringify({
+            email: email,
+            password: password
+        });
+
+        console.log(body);
+        fetch('/api/v1/accounts/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: body
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.success) {
+                    setTimeout(() => {
+                        navigate(`/account/${data.user_id}`);
+                        localStorage.setItem('loggedIn', true);
+                        localStorage.setItem('email', email);
+                        localStorage.setItem('id', data.user_id);
+                    }, 2000)
+                }
+            })
+    }
+
     return (
         <div className='window' id='login'>
             <div className='form'>
                 <FancyInput type='text' placeholder='Email' value={email} onChange={handleEmail} />
                 <FancyInput type='password' placeholder='Password' value={password} onChange={handlePassword} />
-                <FancyButton name='Login' />
+                <FancyButton name='Login' onClick={doLogin} />
                 <Link to="/signup" id='link'>Sign Up</Link>
-                <span>{message}</span>
             </div>
         </div>
     )

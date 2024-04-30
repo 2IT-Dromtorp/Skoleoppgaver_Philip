@@ -9,7 +9,6 @@ import Account from "./components/pages/account/account";
 import '../src/components/global.css';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <BrowserRouter>
@@ -17,7 +16,7 @@ function App() {
         <Route path="/" element={<Template />}>
           <Route index element={<Landing />} />
           <Route path="/loan" element={<Loan />} />
-          <Route path="/login" element={<Login setLoggedIn={setLoggedIn} />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/account/:userid" element={<Account />} />
         </Route>
