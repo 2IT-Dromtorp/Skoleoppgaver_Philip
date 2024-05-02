@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import FancyAscii from '../../modules/fancyascii/fancyascii';
 import Camera from '../../../assets/Camera.png';
 import Laptop from '../../../assets/Laptop.jpg';
 import Podcast from '../../../assets/PodcastMic.jpg';
 import Ethernet from '../../../assets/EthCable.jpg';
 import Router from '../../../assets/WRouter.jpg';
-import Sigma from '../../../assets/andreasmogging.gif'
 import './css/landing.css';
 
 function Landing() {
@@ -15,9 +13,6 @@ function Landing() {
     <main className='main'>
       <section className='homepage-section-module'>
         <div className='homepage-module-data-content'>
-          <div className='module-ascii-container'>
-            <FancyAscii src={Sigma} />
-          </div>
           <h1 className='module-header'>Drømtorp Lend</h1>
           <p className='module-subhead'>Gear Up for Your Projects.</p>
           <div className='module-links'>

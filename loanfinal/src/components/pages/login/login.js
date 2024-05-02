@@ -19,8 +19,43 @@ function Login() {
     };
 
     const doLogin = () => {
-        console.log('Login');
-    };
+        const body = {
+            email: email,
+            password: password
+        };
+    
+        fetch('/api/v1/account/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return res.json();
+        })
+        .then((data) => {
+            if (data.token) {
+                // Store only the token in local storage
+                localStorage.setItem('token', data.token);
+                const username = data.userDetails.first_name + ' ' + data.userDetails.last_name;
+                localStorage.setItem('username', username);
+                localStorage.setItem('email', data.userDetails.email);
+                localStorage.setItem('loggedIn', true);
+                navigate('/account');
+                window.location.reload();
+            } else {
+                console.log(data.error);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('An error occurred during login. Please try again.');
+        });
+    };      
 
     return (
         <main className='main'>
@@ -28,10 +63,10 @@ function Login() {
                 <div className='login-module-data-content'>
                     <div className='module-login-form'>
                         <span className='module-header'>Login</span>
-                        <FancyInput type='text' placeholder='Email*' value={email} onChange={handleEmail} />
-                        <FancyInput type='password' placeholder='Password*' value={password} onChange={handlePassword} />
-                        <FancyButton name='Login' onClick={doLogin} />
-                        <Link to="/signup" id='link'>Don't have an account? Sign Up</Link>
+                        <FancyInput placeholder='Email' type='email' value={email} onChange={handleEmail} />
+                        <FancyInput placeholder='Password' type='password' value={password} onChange={handlePassword} />
+                        <FancyButton text='Login' onClick={doLogin} />
+                        <Link to="/signup" className='link'>Don't have an account? Sign Up</Link>
                     </div>
                 </div>
             </section>

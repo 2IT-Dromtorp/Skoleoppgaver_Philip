@@ -18,7 +18,7 @@ function App() {
           <Route path="/loan" element={<Loan />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/account/:userid" element={<Account />} />
+          <Route path="/account" element={<Account />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -3,33 +3,31 @@
     box-sizing: border-box;
 }
 
-#input {
+.fancyinput {
     display: flex;
     width: 250px;
     height: 50px;
 }
 
-#content-input {
+.fancyinput-content {
     position: relative;
     display: flex;
-    padding: 1em 0 1em 1em;
     flex: 1;
     background: #FFF;
-    border: solid 1.5px #1D1D1F;
-    border-radius: 8px;
 }
 
-#field {
+.field {
     display: flex;
     flex: 1;
     outline: none;
     background: none;
     border: none;
-    padding: 0;
+    padding: 1em 0 1em 1em;
+    margin: 0;
     color: #1D1D1F;
 }
 
-#placeholder {
+.input-placeholder {
     position: absolute;
     transition: .25s;
     top: 16px;
@@ -39,7 +37,7 @@
     text-align: center;
 }
 
-#content-input.content-focused #placeholder {
+.fancyinput-content#content-focused .input-placeholder {
     top: 2px;
     font-size: .75em;
     color: #8B8B92;

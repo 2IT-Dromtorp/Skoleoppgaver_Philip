@@ -1,21 +1,19 @@
-#dropdown {
+.dropdown {
     position: relative;
     display: flex;
     height: 50px;
     width: 250px;
 }
 
-#content {
+.content {
     flex: 1;
     padding: 1em;
     background: #FFF;
-    border-radius: 8px;
     cursor: pointer;
-    border: solid 1.5px #1D1D1F;
 }
 
-#options {
-    top: 85%;
+.options {
+    top: 100%;
     z-index: 999;
     width: 100%;
     padding: 0;
@@ -23,25 +21,22 @@
     list-style: none;
     position: absolute;
     background: #FFF;
-    border-left: solid 1.5px #1D1D1F;
-    border-right: solid 1.5px #1D1D1F;
-    border-bottom: solid 1.5px #1D1D1F;
-    border-radius: 0 0 8px 8px;
     display: none;
 }
 
-#dropdown.active #options {
+.dropdown#active .options {
     display: block;
 }
 
-#item {
+.item {
     padding: 8px 1em;
     width: 100%;
     cursor: pointer;
 }
 
-#placeholder.dropdown {
+.dropdown-placeholder {
     top: 3px;
+    left: 16px;
     font-size: .75em;
     color: #8B8B92;
     position: absolute;

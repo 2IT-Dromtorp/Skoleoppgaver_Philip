@@ -22,7 +22,15 @@ export default Layout
 function Navbar() {
     const navigate = useNavigate();
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setLoggedIn] = useState(false);
+    const [username, setUsername] = useState('');
+    const [role, setRole] = useState('');
+    useEffect(() => {
+        if (localStorage.getItem('loggedIn') === 'true') {
+            setLoggedIn(true);
+            setUsername(localStorage.getItem('username'));
+        }
+    }, []);
 
     const logOut = () => {
         localStorage.clear();
@@ -45,8 +53,8 @@ function Navbar() {
                             <Link to={`/account/1`} className='globalnav-link'>
                                 <span className='globalnav-text-container'>
                                     <div className='globalnav-user'>
-                                        <img draggable='false'className='globalnav-user-image' />
-                                        userName
+                                        <img draggable='false'className='globalnav-user-image' src={DefaultProfile} />
+                                        {username}
                                         <button className='globalnav-logout' onClick={logOut}>Log out</button>
                                     </div>
                                 </span>
