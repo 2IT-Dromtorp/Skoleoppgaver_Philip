@@ -9,12 +9,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: .25s;
+    border-radius: 25px;
+    background: #0071E3;
+    border: solid 1px #0071E3;
+    color: #FFF;
 }
 
 #content.button:hover {
-    background: blue;
-    color: #FFF;
+    background: #FFF;
+    color: #0071E3;
 }
 
 #name.button {

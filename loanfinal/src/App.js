@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useState } from "react";
-import Template from "./components/pages/template";
-import Landing from "./components/pages/landing";
+import Layout from "./components/layout/layout.js";
+import Landing from "./components/pages/landing/landing";
 import Loan from "./components/pages/loan/loan";
 import Login from "./components/pages/login/login";
 import Signup from "./components/pages/signup/signup";
@@ -13,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Template />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Landing />} />
           <Route path="/loan" element={<Loan />} />
           <Route path="/login" element={<Login />} />

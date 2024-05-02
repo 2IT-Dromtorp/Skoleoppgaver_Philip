@@ -1,0 +1,113 @@
+#globalfooter {
+    display: flex;
+    width: 100%;
+    background: #F5F5F7;;
+    font-size: 12px !important;
+    color: #0000008F !important;
+}
+
+.globalfooter-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 0 auto;
+    box-sizing: border-box;
+    max-width: 1280px;
+}
+
+.globalfooter-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1em 0;
+    border-bottom: solid 1px #0000008F;
+    box-sizing: border-box;
+    max-width: 1280px;
+}
+
+.globalfooter-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    max-width: 1280px;
+}
+
+.globalfooter-footnote {
+    display: flex;
+    padding: 0 0 8px;
+    flex-direction: row;
+    flex: 1;
+    box-sizing: border-box;
+    max-width: 1280px;
+}
+
+.globalfooter-legal {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1em 0;
+    margin: 0;
+    box-sizing: border-box;
+    max-width: 1280px;
+}
+
+.globalfooter-contact {
+    border-bottom: solid 1px #0000008F;
+    padding: 0 0 1em;
+    margin: 0 0 1em;
+}
+
+.globalfooter-legal-content {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    height: 18px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.globalfooter-item {
+    display: flex;
+}
+
+.globalfooter-legal-list > :not(:first-child)::before {
+    content: "";
+    display: flex;
+    height: 10px;
+    width: 1px;
+    background: #0000008F;
+    margin: 0 8px;
+}
+
+.globalfooter-text {
+    margin: 8px 1.5em 0 0;
+}
+
+.globalfooter-legal-list {
+    margin: 8px 1.5em 0 0;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.globalfooter-item {
+    display: flex;
+    align-items: center;
+}
+
+.globalfooter-legal-link {
+    text-decoration: none;
+    color: #0000008F;
+}
+
+.globalfooter-country {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 0 0;
+    margin-left: auto;
+}

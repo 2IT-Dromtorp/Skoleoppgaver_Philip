@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './fancyinput.css'
 
-function FancyInput({ placeholder, type, value, onChange }) {
+function FancyInput({ placeholder, type, value, onChange, accept }) {
     const [focused, setFocused] = useState(false);
 
     const handleFocus = () => {
@@ -22,7 +22,7 @@ function FancyInput({ placeholder, type, value, onChange }) {
         <div id='input'>
             <div id='content' className={focused || value ? 'content-focused' : ''}>
                 <input
-                value={value} id='field' required type={type} onFocus={handleFocus} onBlur={handleBlur} onChange={handleChange} />
+                value={value} id='field' required type={type} accept={accept} onFocus={handleFocus} onBlur={handleBlur} onChange={handleChange} />
                 <span id='placeholder'>{placeholder}</span>
             </div>
         </div>

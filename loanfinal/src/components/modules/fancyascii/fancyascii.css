@@ -1,0 +1,10 @@
+.ascii-output {
+    font-size: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.ascii-image {
+    width: 100%;
+}

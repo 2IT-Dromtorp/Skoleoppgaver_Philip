@@ -1,69 +1,113 @@
-const mysql = require('mysql2');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8080;
 const cors = require('cors');
+const bcrypt = require('bcrypt');
+const { MongoClient, ObjectId } = require('mongodb');
 app.use(cors());
 
 app.use(express.json());
 
-const POOL = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'loandb'
-});
+const mongodbURL = "mongodb+srv://womp:Womp@cluster0.3znw9ak.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-app.post('/api/v1/accounts/create', (req, res) => {
-    const { email, password, role } = req.body;
+const mongoClient = new MongoClient(mongodbURL);
+async function main() {
+    await mongoClient.connect();
 
-    if (!email || !password || !role) {
-        return res.status(400).json({ success: false, message: 'Please provide email, password, and role' });
-    }
-    POOL.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
-        if (err) {
-            return res.status(500).json({ success: false, message: 'Internal server error' });
+    const mainDB = mongoClient.db('loandb');
+    const usersCol = mainDB.collection('users');
+    const loansCol = mainDB.collection('loans');
+    const studentsCol = mainDB.collection('students');
+    const teachersCol = mainDB.collection('teachers');
+    const adminsCol = mainDB.collection('admins');
+    const equipmentCol = mainDB.collection('equipment');
+
+    //Complete
+    app.post('/api/v1/accounts/create', async (req, res) => {
+        const { first_name, last_name, phone_number, email, password, conf_password, role } = req.body;
+        if (!first_name || !last_name || !phone_number || !email || !password || !conf_password || !role) {
+            return res.status(400).json({ success: false, message: 'All fields are required' });
         }
-        if (results.length > 0) {
-            return res.status(409).json({ success: false, message: 'Email already exists' });
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        if (!emailRegex.test(email)) {
+            return res.status(400).send("Invalid email format");
         }
-        POOL.query('INSERT INTO users (email, password, role) VALUES (?, ?, ?)', [email, password, role], (insertErr, insertResults) => {
-            if (insertErr) {
-                return res.status(500).json({ success: false, message: 'Internal server error' });
+        if (!passwordRegex.test(password)) {
+            return res.status(400).send("Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one number");
+        }
+        if (password !== conf_password) {
+            return res.status(400).send("Passwords don't match");
+        }
+        try {
+            const saltRounds = 10;
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+            const dupeUser = await usersCol.findOne({ email: email });
+            if (dupeUser) {
+                return res.status(409).send("Email already in use");
             }
-            res.status(201).json({ success: true, message: 'User created successfully' });
-        });
-    });
-});
-
-app.post('/api/v1/accounts/login', (req, res) => {
-    const { email, password } = req.body;
-
-    if (!email || !password) {
-        return res.status(400).json({ success: false, message: 'Please provide email and password' });
-    }
-
-    POOL.query('SELECT user_id, email FROM users WHERE email = ? AND password = ?', [email, password], (err, results) => {
-        if (err) {
-            return res.status(500).json({ success: false, message: 'Internal server error' });
+            try {
+                const insertRes = await usersCol.insertOne({
+                    email: email,
+                    password: hashedPassword,
+                    role: role,
+                    profile_picture: "https://i.ibb.co/wYm1rhC/default-profile.jpg",
+                    created_at: new Date(),
+                });
+                try {
+                    const column = role === 'Student' ? studentsCol : role === 'Teacher' ? teachersCol : role === 'System Administrator' ? adminsCol : undefined;
+                    if (!column) return res.status(400).send("Role is NOT right OK!")
+                    const insertRes2 = await column.insertOne({ user: insertRes.insertedId, first_name: first_name, last_name: last_name, phone_number: phone_number });
+                    res.status(201).json({ success: true, message: 'User created successfully' });
+                } catch (error) {
+                    console.error(error);
+                    res.status(500).send("Internal Server Error");
+                }
+            } catch (error) {
+                console.error(error);
+                res.status(500).send("Internal Server Error");
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("Internal Server Error");
         }
-        if (results.length === 0) {
-            return res.status(401).json({ success: false, message: 'Invalid email or password' });
+    });
+
+    //Complete
+    app.post('/api/v1/accounts/login', async (req, res) => {
+        const { email, password } = req.body;
+        if (!email || !password) {
+            return res.status(400).json({ success: false, message: 'All fields are required' });
         }
-
-        const user = results[0];
-        const user_id = user.user_id;
-
-        res.status(200).json({ success: true, message: 'Login successful', user_id: user_id });
+        try {
+            const user = await usersCol.findOne({ email: email });
+            if (!user) {
+                return res.status(401).json({ success: false, message: 'Invalid email or password' });
+            }
+            const match = await bcrypt.compare(password, user.password);
+            if (!match) {
+                return res.status(401).json({ success: false, message: 'Invalid email or password' });
+            }
+            console.log('User Info:', user);
+            res.status(200).json({
+                success: true,
+                message: 'User logged in successfully',
+                user: user
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("Internal Server Error");
+        }
     });
-});
 
-app.get('/api/v1/users', (req, res) => {
-    POOL.query('SELECT user_id, email, role FROM users', (err, results) => {
-        res.send(results);
+    //TODO Finish this
+    app.get('/api/v1/accounts/:role/:id', async (req, res) => {
     });
-});
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+
+}
+
+main();
