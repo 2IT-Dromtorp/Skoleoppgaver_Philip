@@ -7,7 +7,7 @@ import './css/layout.css';
 import './css/navbar.css';
 import './css/footer.css';
 
-function Layout({ userId }) {
+function Layout() {
     return (
         <div className='render'>
             <Navbar />
@@ -21,8 +21,8 @@ export default Layout
 
 function Navbar() {
     const navigate = useNavigate();
-    const [isLoggedIn] = useState(localStorage.getItem('loggedIn'));
-    const [userId] = useState(localStorage.getItem('userId'));
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const logOut = () => {
         localStorage.clear();
@@ -42,7 +42,7 @@ function Navbar() {
                     <li className='globalnav-item'><Link to='/loan' className='globalnav-link'><span className='globalnav-text-container'>Borrow equipment</span></Link></li>
                     {isLoggedIn ? (
                         <li className='globalnav-item'>
-                            <Link to={`/account/${userId}`} className='globalnav-link'>
+                            <Link to={`/account/1`} className='globalnav-link'>
                                 <span className='globalnav-text-container'>
                                     <div className='globalnav-user'>
                                         <img draggable='false'className='globalnav-user-image' />

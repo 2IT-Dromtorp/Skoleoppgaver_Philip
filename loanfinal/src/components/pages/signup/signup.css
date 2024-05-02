@@ -17,38 +17,6 @@
     gap: 1em;
 }
 
-.module-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    height: 100%;
-    width: 400px;
-}
-
-.module-left-info {
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-    height: 100%;
-}
-
-.module-text {
-    font-size: 12px;
-    margin: 12px 0 0;
-}
-
-.module-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    height: 100%;
-    width: 400px;
-}
-
 .module-form {
     display: flex;
     flex-direction: column;

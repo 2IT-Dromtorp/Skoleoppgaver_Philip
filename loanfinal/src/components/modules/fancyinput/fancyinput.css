@@ -9,12 +9,14 @@
     height: 50px;
 }
 
-#content {
+#content-input {
     position: relative;
     display: flex;
     padding: 1em 0 1em 1em;
     flex: 1;
     background: #FFF;
+    border: solid 1.5px #1D1D1F;
+    border-radius: 8px;
 }
 
 #field {
@@ -30,14 +32,14 @@
 #placeholder {
     position: absolute;
     transition: .25s;
-    top: 14.5px;
+    top: 16px;
     left: 16px;
     pointer-events: none;
     color: #1D1D1F;
     text-align: center;
 }
 
-#content.content-focused #placeholder {
+#content-input.content-focused #placeholder {
     top: 2px;
     font-size: .75em;
     color: #8B8B92;

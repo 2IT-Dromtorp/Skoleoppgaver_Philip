@@ -22,8 +22,7 @@ async function main() {
     const adminsCol = mainDB.collection('admins');
     const equipmentCol = mainDB.collection('equipment');
 
-    //Complete
-    app.post('/api/v1/accounts/create', async (req, res) => {
+    app.post('/api/v1/account/create', async (req, res) => {
         const { first_name, last_name, phone_number, email, password, conf_password, role } = req.body;
         if (!first_name || !last_name || !phone_number || !email || !password || !conf_password || !role) {
             return res.status(400).json({ success: false, message: 'All fields are required' });
@@ -71,37 +70,6 @@ async function main() {
             console.error(error);
             res.status(500).send("Internal Server Error");
         }
-    });
-
-    //Complete
-    app.post('/api/v1/accounts/login', async (req, res) => {
-        const { email, password } = req.body;
-        if (!email || !password) {
-            return res.status(400).json({ success: false, message: 'All fields are required' });
-        }
-        try {
-            const user = await usersCol.findOne({ email: email });
-            if (!user) {
-                return res.status(401).json({ success: false, message: 'Invalid email or password' });
-            }
-            const match = await bcrypt.compare(password, user.password);
-            if (!match) {
-                return res.status(401).json({ success: false, message: 'Invalid email or password' });
-            }
-            console.log('User Info:', user);
-            res.status(200).json({
-                success: true,
-                message: 'User logged in successfully',
-                user: user
-            });
-        } catch (error) {
-            console.error(error);
-            res.status(500).send("Internal Server Error");
-        }
-    });
-
-    //TODO Finish this
-    app.get('/api/v1/accounts/:role/:id', async (req, res) => {
     });
 
     app.listen(port, () => {
