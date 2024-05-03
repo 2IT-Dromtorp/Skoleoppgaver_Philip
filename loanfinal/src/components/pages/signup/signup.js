@@ -54,6 +54,7 @@ function Signup() {
             role: role,
             className: className
         };
+    
         fetch('/api/v1/account/create', {
             method: 'POST',
             headers: {
@@ -61,21 +62,18 @@ function Signup() {
             },
             body: JSON.stringify(body)
         })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.success) {
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('username', data.userDetails.first_name + ' ' + data.userDetails.last_name);
-                    localStorage.setItem('email', data.userDetails.email);
-                    localStorage.setItem('loggedIn', true);
-                    navigate('/account');
-                    window.location.reload();
-                }
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    };
+        .then((res) => res.json())
+        .then((data) => {
+            if (data.success) {
+                navigate('/account');
+            } else {
+                console.error('Signup failed:', data.error);
+            }
+        })
+        .catch((error) => {
+            console.error('Network error:', error);
+        });
+    };    
 
     return (
         <main className='main'>

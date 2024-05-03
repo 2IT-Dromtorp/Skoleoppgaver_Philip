@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import FancyInput from '../../modules/fancyinput/fancyinput';
 import FancyButton from '../../modules/fancybutton/fancybutton';
 import './login.css';
+import { jwtDecode } from 'jwt-decode';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -39,14 +40,9 @@ function Login() {
         })
         .then((data) => {
             if (data.token) {
-                // Store only the token in local storage
                 localStorage.setItem('token', data.token);
-                const username = data.userDetails.first_name + ' ' + data.userDetails.last_name;
-                localStorage.setItem('username', username);
-                localStorage.setItem('email', data.userDetails.email);
-                localStorage.setItem('loggedIn', true);
+                localStorage.setItem('isLoggedIn', true);
                 navigate('/account');
-                window.location.reload();
             } else {
                 console.log(data.error);
             }

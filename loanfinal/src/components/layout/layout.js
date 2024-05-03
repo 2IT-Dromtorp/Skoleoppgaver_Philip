@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/authContext';
 import DefaultProfile from '../../assets/default_profile.jpg';
+import { jwtDecode } from 'jwt-decode';
 import './css/layout.css';
 import './css/navbar.css';
 import './css/footer.css';
@@ -20,23 +22,32 @@ function Layout() {
 export default Layout
 
 function Navbar() {
+    const { user } = useAuth();
     const navigate = useNavigate();
-
-    const [isLoggedIn, setLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState('');
-    const [role, setRole] = useState('');
+    const [userDetails, setUserDetails] = useState({ firstName: '', lastName: '' });
+
     useEffect(() => {
-        if (localStorage.getItem('loggedIn') === 'true') {
-            setLoggedIn(true);
-            setUsername(localStorage.getItem('username'));
+        const token = localStorage.getItem('token');
+        if (!token) {
+            return;
         }
-    }, []);
+        const decodedToken = jwtDecode(token);
+        const username = `${decodedToken.firstName} ${decodedToken.lastName}`;
+        if (token) {
+            setIsLoggedIn(true);
+            setUsername(username);
+        }
+    })
+
 
     const logOut = () => {
         localStorage.clear();
-        navigate('/login');
+        navigate('/');
         window.location.reload();
     };
+    
 
     return (
         <nav id='globalnav'>
@@ -50,10 +61,10 @@ function Navbar() {
                     <li className='globalnav-item'><Link to='/loan' className='globalnav-link'><span className='globalnav-text-container'>Borrow equipment</span></Link></li>
                     {isLoggedIn ? (
                         <li className='globalnav-item'>
-                            <Link to={`/account/1`} className='globalnav-link'>
+                            <Link to={`/account`} className='globalnav-link'>
                                 <span className='globalnav-text-container'>
                                     <div className='globalnav-user'>
-                                        <img draggable='false'className='globalnav-user-image' src={DefaultProfile} />
+                                        <img draggable='false' className='globalnav-user-image' src={DefaultProfile} />
                                         {username}
                                         <button className='globalnav-logout' onClick={logOut}>Log out</button>
                                     </div>

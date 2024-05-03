@@ -69,6 +69,7 @@
 }
 
 .globalnav-logout {
+    z-index: 999;
     margin-left: 8px;
     padding: 0;
     height: 100%;
