@@ -1,0 +1,128 @@
+.landing-module {
+    display: flex;
+    flex: 1;
+    background: url('../../assets/134241286.webp');
+    background-size: cover;
+}
+
+.landing-module-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    backdrop-filter: blur(20px);
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-field {
+    height: 60px;
+    width: 500px;
+    padding: 0 1em;
+    display: flex;
+    flex-direction: row;
+    background: #FFF;
+    border-radius: 1000px;
+}
+
+.field-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #FFF;
+    border-radius: 8px;
+}
+
+.field-list-item {
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+}
+
+.list-item-clickable {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 1em;
+    text-decoration: none;
+    color: #1D1D1F;
+}
+
+.field-list-item:hover {
+    background: #00000025;
+}
+
+.list-player {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+}
+
+.fancyinput {
+    display: flex;
+    flex: 1;
+}
+
+.fancyinput-content {
+    display: flex;
+    flex: 1;
+}
+
+.fancyinput-field {
+    display: flex;
+    flex: 1;
+    font-size: 1em;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0;
+}
+
+.fancydropdown {
+    display: flex;
+    width: 50px;
+}
+
+.fancydropdown-content {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+}
+
+.value {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.dropdown-list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    list-style: none;
+    width: 100%;
+    top: 100%;
+    background: #FFF;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    padding: 4px 8px;
+}

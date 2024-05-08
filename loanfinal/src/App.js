@@ -13,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/3000" element={<Layout />}>
           <Route index element={<Landing />} />
           <Route path="/loan" element={<Loan />} />
           <Route path="/login" element={<Login />} />
