@@ -1,0 +1,37 @@
+#globalnav {
+    display: flex;
+    background: green;
+}
+
+.gn-content {
+    display: flex;
+    flex: 1;
+}
+
+.gn-list {
+    display: flex;
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.gn-list-item {
+    display: flex;
+    height: 44px;
+    padding: 0 8px;
+}
+
+.gn-list-item-link {
+    display: flex;
+    flex: 1;
+    text-decoration: none;
+}
+
+.gn-list-item-textbox {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    font-size: 12px;
+    color: #00000080;
+}

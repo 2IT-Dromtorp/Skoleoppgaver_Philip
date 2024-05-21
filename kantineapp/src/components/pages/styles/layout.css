@@ -1,0 +1,66 @@
+#root {
+    display: flex;
+    min-height: 100vh;
+}
+
+#render {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+#app-mount {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+#globalnav {
+    display: flex;
+    background: #2F2F2F;
+}
+
+.gnContent {
+    display: flex;
+    flex: 1;
+}
+
+.gnList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+    padding: 4px 1em;
+    margin: 0;
+}
+
+.li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 9999px;
+}
+
+.user:hover {
+    background: #80808050;
+}
+
+.profileImage {
+    display: flex;
+    height: 32px;
+    width: 32px;
+}
+
+.image {
+    flex: 1;
+    border-radius: 9999px;
+}
