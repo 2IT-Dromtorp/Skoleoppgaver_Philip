@@ -1,9 +1,10 @@
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useNavigate } from 'react-router-dom';
 import "./styles/layout.css";
 import Profile from "../../assets/profile.png";
 
 function Layout() {
+
     return (
         <div id='render'>
             <Navbar />
@@ -18,8 +19,16 @@ export default Layout;
 
 const Navbar = () => {
 
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.clear();
+        navigate("/")
+    }
+
+    const name = localStorage.getItem("name")
     const loginStatus = localStorage.getItem("loginStatus");
-    console.log("Login status:", loginStatus)
+    const userId = localStorage.getItem("userId");
 
     return (
         <nav id='globalnav'>
@@ -32,13 +41,19 @@ const Navbar = () => {
                     </li>
                     {loginStatus ? (
                         <li className='li'>
-                            <Link to="/profile" id='link'>
+                            <span className='username'>
+                                {name}
+                            </span>
+                            <Link to={`/profile/${userId}`} id='link'>
                                 <div className='user'>
                                     <div className='profileImage'>
                                         <img src={Profile} alt='Profile' className='image' />
                                     </div>
                                 </div>
                             </Link>
+                            <button className='logout-btn' onClick={logout}>
+                                <span>Logout</span>
+                            </button>
                         </li>
                     ) : (
                         <li className='li'>

@@ -1,0 +1,27 @@
+#login-render {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    gap: 8px;
+}
+
+.input {
+    width: 300px;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    padding: 0 1em;
+    outline: none;
+}
+
+.logreg-button {
+    width: 300px;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    padding: 0 1em;
+    outline: none;
+    background-color: #ECECEC;
+    color: #2F2F2F;
+    cursor: pointer;
+}
