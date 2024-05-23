@@ -1,3 +1,22 @@
+.page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-header {
+    font-size: 3em;
+    color: #ECECEC;
+    font-weight: 500;
+}
+
+.title-subheader {
+    font-size: 1.5em;
+    color: #ECECEC;
+    font-weight: 300;
+}
+
 .card-container {
     display: flex;
     flex-direction: row;
@@ -22,6 +41,7 @@
     height: 250px;
     background: #2F2F2F;
     border-radius: 8px;
+    box-shadow: 0 0 8px #000;
 }
 
 .card-upper-half {
@@ -74,4 +94,10 @@
     padding: 8px;
     border: none;
     border-radius: 8px;
+    cursor: pointer;
+}
+
+.card-button:hover {
+    background: #FFAA1E;
+    color: #ECECEC;
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import "./styles/layout.css";
-import Profile from "../../assets/profile.png";
 
 function Layout() {
 
@@ -29,6 +28,7 @@ const Navbar = () => {
     const name = localStorage.getItem("name")
     const loginStatus = localStorage.getItem("loginStatus");
     const userId = localStorage.getItem("userId");
+    const url = localStorage.getItem("url");
 
     return (
         <nav id='globalnav'>
@@ -47,7 +47,7 @@ const Navbar = () => {
                             <Link to={`/profile/${userId}`} id='link'>
                                 <div className='user'>
                                     <div className='profileImage'>
-                                        <img src={Profile} alt='Profile' className='image' />
+                                        <img src={url} alt='Profile' className='image' />
                                     </div>
                                 </div>
                             </Link>

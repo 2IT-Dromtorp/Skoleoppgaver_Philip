@@ -3,10 +3,11 @@ const app = express();
 const port = process.env.PORT || 8080;
 const cors = require('cors');
 const bcrypt = require('bcrypt');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static("build"));
 
 const mongodbURL = "mongodb+srv://womp:Womp@cluster0.3znw9ak.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const mongoClient = new MongoClient(mongodbURL);
@@ -94,6 +95,56 @@ async function main() {
             return res.status(200).json(products);
         } catch (error) {
             console.error('Error fetching products:', error);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+    });
+
+    app.post('/api/v1/purchase', async (req, res) => {
+        const { userId, productId, quantity } = req.body;
+    
+        if (!userId || !productId || !quantity) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+    
+        try {
+            const user = await usersCol.findOne({ _id: new ObjectId(userId) });
+            const product = await productsCol.findOne({ _id: new ObjectId(productId) });
+    
+            if (!user) {
+                return res.status(404).json({ error: 'User not found' });
+            }
+    
+            if (!product) {
+                return res.status(404).json({ error: 'Product not found' });
+            }
+    
+            if (product.q < quantity) {
+                return res.status(400).json({ error: 'Not enough product quantity' });
+            }
+    
+            const totalCost = product.p * quantity;
+    
+            if (user.currency < totalCost) {
+                return res.status(400).json({ error: 'Not enough currency' });
+            }
+    
+            const updatedUser = await usersCol.updateOne(
+                { _id: user._id },
+                { $inc: { currency: -totalCost } }
+            );
+    
+            const updatedProduct = await productsCol.updateOne(
+                { _id: product._id },
+                { $inc: { q: -quantity } }
+            );
+    
+            if (updatedUser.modifiedCount === 1 && updatedProduct.modifiedCount === 1) {
+                return res.status(200).json({ success: true });
+            } else {
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
+        } catch (error) {
+            console.error('Error processing purchase:', error);
             return res.status(500).json({ error: 'Internal Server Error' });
         }
     });

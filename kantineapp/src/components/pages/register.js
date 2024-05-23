@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './styles/register.css'
+import { Link } from 'react-router-dom';
 
 function Register() {
     const [name, setName] = useState('');
@@ -22,7 +23,7 @@ function Register() {
             return;
         }
 
-        fetch('http://localhost:8080/api/v1/register', {
+        fetch('/api/v1/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body)
@@ -50,6 +51,7 @@ function Register() {
                 <input className='input' type='password' value={confPassword} onChange={handleConfPassword} placeholder="Confirm Password" />
                 <input className='input' type='tel' value={phone} onChange={handlePhone} placeholder="Phone" />
                 <button className="logreg-button" onClick={register}>Register</button>
+                <Link to="/login">Already have an account? Login here</Link>
             </div>
         </main>
     );
