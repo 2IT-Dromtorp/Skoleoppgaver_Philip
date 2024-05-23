@@ -9,6 +9,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("build"));
 
+const path = require("node:path")
+
+        app.get("*", (req, res) => {
+        res.sendFile(path.resolve("./build/index.html"));
+    });
+
 const mongodbURL = "mongodb+srv://womp:Womp@cluster0.3znw9ak.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const mongoClient = new MongoClient(mongodbURL);
 
