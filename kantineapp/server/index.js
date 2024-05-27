@@ -151,6 +151,13 @@ async function main() {
         }
     });
 
+    app.post('/api/v1/addjsonproduct', async (req, res) => {
+        const { file } = req.body;
+        console.log(file)
+        
+        productsCol.insertOne(file.toJSON())
+    });
+
     app.listen(port, () => {
         console.log(`Server is running on port ${port}`);
     });

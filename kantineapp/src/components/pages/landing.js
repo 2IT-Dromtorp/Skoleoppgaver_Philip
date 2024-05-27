@@ -8,7 +8,7 @@ function Landing() {
 
     const getProducts = async () => {
         try {
-            const response = await fetch('/api/v1/products');
+            const response = await fetch('http://localhost:8080/api/v1/products');
             const data = await response.json();
             console.log('Fetched products:', data);
             setProducts(data);
@@ -72,7 +72,7 @@ const ProductCard = ({ src, title, description, price, quantity, productId, getP
         }
 
         try {
-            const response = await fetch('/api/v1/purchase', {
+            const response = await fetch('http://localhost:8080/api/v1/purchase', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
