@@ -1,0 +1,142 @@
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.background {
+    display: flex;
+    flex: 1;
+    background: url('../../../assets/images/bg_start.jpg');
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.player-box {
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 8px;
+    background: #090A0A99;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #ececec;
+}
+
+/* Header styling */
+.header {
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.header-cell {
+    flex: 1;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ececec;
+}
+
+.cs-header {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #b1b1b1;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.ps-stats {
+    background-color: transparent;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.s-cell {
+    display: flex;
+}
+
+.v-cell {
+    width: 80px;
+    text-align: center;
+}
+
+.info-bar {
+    text-align: center;
+    font-size: 12px;
+    color: #b1b1b1;
+    margin-top: 10px;
+}
+
+.info-bar span {
+    color: #cc0000e6;
+}
+
+/*session styling*/
+
+.session-box {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    background: #090A0A99;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #ececec;
+}
+
+.session {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+    gap: 4px;
+    padding: 4px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    flex: 1;
+    background: #00000030;
+    border-radius: 1em;
+}
+
+.stat-label {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #ececec;
+}
+
+.stat-value {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 4px;
+    color: #ececec;
+}
+
+.career-value {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 4px;
+    color: #b1b1b1;
+}
