@@ -39,6 +39,11 @@ const Navbar = () => {
                             Home
                         </Link>
                     </li>
+                    <li className='li'>
+                        <Link to="/addproduct" id='link'>
+                            Add Products
+                        </Link>
+                    </li>
                     {loginStatus ? (
                         <li className='li'>
                             <span className='username'>

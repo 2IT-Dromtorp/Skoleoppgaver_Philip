@@ -4,6 +4,7 @@ import Landing from './components/pages/landing';
 import Profile from './components/pages/profile';
 import Login from './components/pages/login';
 import Register from './components/pages/register';
+import Addproduct from './components/pages/addproduct';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path='/profile/:userId' element={<Profile />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/addproduct' element={<Addproduct />} />
         </Route>
       </Routes>
     </BrowserRouter>

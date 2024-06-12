@@ -1,0 +1,63 @@
+#server-root {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.server-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 250px;
+    background: #2C2C2C;
+}
+
+.server-header {
+    display: flex;
+    padding: 1em;
+    align-items: center;
+    justify-content: center;
+    background: #00000050;
+}
+
+.server-title {
+    font-size: 1em;
+    font-weight: 350;
+    color: #ECECEC;
+}
+
+.server-channels {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.container-channel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 8px;
+    box-sizing: border-box;
+}
+
+.channel-content {
+    display: flex;
+    flex: 1;
+    height: 34px;
+}
+
+.channel-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.server-channel-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #ECECEC;
+}

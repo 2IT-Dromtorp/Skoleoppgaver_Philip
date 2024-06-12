@@ -1,0 +1,81 @@
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#app-mount {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.app-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.app-sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    max-height: 100vh;
+    background: green;
+}
+
+.app-chats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-chat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: #FFF;
+    border-radius: 12px;
+}
+
+.sidebar-divider {
+    display: flex;
+    width: 48px;
+    border-bottom: solid 1px #FFF;
+    margin: 8px 0;
+}
+
+.app-servers {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+}
+
+.app-server {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    transition: .25s;
+}
+
+.app-server:hover {
+    transform: scale(1.05);
+}
+
+.server-icon {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    border-radius: 12px;
+    object-fit: cover;
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function Player() {
   const { region, playerid } = useParams();
@@ -51,38 +51,44 @@ function Player() {
     return <div>Loading...</div>;
   }
 
-  const { wins, damage_dealt, damage_received, frags, survived_battles } = player.statistics.all;
+  const { wins, damage_dealt, damage_received, frags, survived_battles, spotted } = player.statistics.all;
 
   const winrate = ((wins / player.statistics.all.battles) * 100).toFixed(2);
   const avgDamage = (damage_dealt / player.statistics.all.battles).toFixed(0);
   const damageRatio = (damage_dealt / damage_received).toFixed(2);
   const deaths = player.statistics.all.battles - player.statistics.all.survived_battles;
   const kdr = (frags / deaths).toFixed(2);
+  const spb = (spotted / player.statistics.all.battles).toFixed(2);
   const survivalRate = ((survived_battles / player.statistics.all.battles) * 100).toFixed(2);
-  const bsRating = ((wins * 0.4) + (damage_dealt * 0.00002) + (damageRatio * 20) + (frags * 0.3) + (survived_battles * 0.1)).toFixed(0);
+  const sRating = ((winrate * 16) + (damageRatio * 120) + (kdr * 120) + (survivalRate * 0.8) + (avgDamage * 0.6) + (spb * 10)).toFixed(0);
 
   return (
     <div className='wrapper'>
       <div>
         <section className='player-box'>
-          <div className='header'>
-            <span className='header-cell'>{region.toUpperCase()}</span>
-            <span className='header-cell'>{player.nickname}</span>
-            <span className='header-cell'>{player.clan ? player.clan.tag : 'No Clan'}</span>
-          </div>
-          <div className='ps-stats'>
-            <h1 className='cs-header'>Career Stats</h1>
-            <StatRow stat='Battles' value={player.statistics.all.battles} />
-            <StatRow stat='Winrate' value={`${winrate}%`} />
-            <StatRow stat='Avg Dmg' value={avgDamage} />
-            <StatRow stat='Dmg ratio' value={damageRatio} />
-            <StatRow stat='Kdr' value={kdr} />
-            <StatRow stat='Survival' value={`${survivalRate}%`} />
-            <StatRow stat='BS Rating' value={bsRating} />
-            <InfoBar />
+          <div>
+            <div className='header'>
+              <span className='header-cell'>{region.toUpperCase()}</span>
+              <span className='header-cell'>{player.nickname}</span>
+              <span className='header-cell'>{player.clan ? player.clan.tag : 'No clan'}</span>
+            </div>
+            <div className='ps-stats'>
+              <h1 className='cs-header'>Career Stats</h1>
+              <table className='stat-table'>
+                <StatRow stat='Battles' value={player.statistics.all.battles} />
+                <StatRow stat='Winrate' value={`${winrate}%`} />
+                <StatRow stat='Avg Dmg' value={avgDamage} />
+                <StatRow stat='Dmg ratio' value={damageRatio} />
+                <StatRow stat='Kdr' value={kdr} />
+                <StatRow stat='Survival' value={`${survivalRate}%`} />
+                <StatRow stat='Special Rating' value={sRating} />
+              </table>
+              <InfoBar />
+            </div>
           </div>
         </section>
       </div>
+      <Link className='session-link' to={`/session/${region}/player/${playerid}`}>Session tracker</Link>
     </div>
   );
 }
@@ -99,7 +105,13 @@ const StatRow = ({ stat, value }) => {
 const InfoBar = () => {
   return (
     <div className='info-bar'>
-      <span style={{ color: '#CC0000E6' }}>*</span> BS Rating is a unique formula
+      <span className='info-star' style={{ color: '#CC0000E6' }}>*</span><span className='info'>Special Rating is a unique formula.</span>
+      <div className='info-hover'>
+        <h1 className='cs-header'>Special Rating Formula</h1>
+        <span className='info'>
+          (winrate * 16) + (damageRatio * 120) + (kdr * 120) + (survivalRate * 0.8) + (avgDamage * 0.6) + (spb * 10)
+        </span>
+      </div>
     </div>
   );
 };

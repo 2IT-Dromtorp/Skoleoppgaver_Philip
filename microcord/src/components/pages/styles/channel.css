@@ -1,0 +1,71 @@
+.channel-root {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-height: 100vh;
+}
+
+.channel-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.channel-title {
+    font-size: 1em;
+    font-weight: 350;
+    color: #ECECEC;
+}
+
+.channel {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 4px;
+    padding: 0;
+    margin: 0;
+}
+
+.channel-message {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+    color: #ECECEC;
+}
+
+.channel-message:hover {
+    background: #00000025;
+}
+
+.message-content {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+}
+
+.message-user {
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+}
+
+.message-info {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.message-username-span {
+    font-size: 12px;
+}
+
+.message-timestamp-span {
+    font-size: 12px;
+}
