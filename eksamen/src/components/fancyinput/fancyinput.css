@@ -1,0 +1,34 @@
+.input-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.input {
+    border: 1px solid #C2C8D0;
+    border-radius: 6px;
+    outline: none;
+    padding: 0 1em;
+    height: 52px;
+    font-size: 1em;
+}
+
+.input-label {
+    position: absolute;
+    top: 50%;
+    left: 1em;
+    transform: translateY(-50%);
+    color: #6F7780;
+    pointer-events: none;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.input-wrapper.focused .input-label,
+.input-wrapper.not-empty .input-label {
+    top: 10px;
+    left: 16px;
+    font-size: 10px;
+    color: #6F7780;
+}
