@@ -56,7 +56,7 @@ function Registration() {
                         <Fancyinput type='password' placeholder='Password*' value={password} onChange={handlePassword} />
                         <Fancyinput type='password' placeholder='Confirm Password*' value={confirmPassword} onChange={handleConfirmPassword} />
                         <Fancybutton text='Register' onClick={register} disabled={loading} />
-                        <Link to='/login'>Already have an account? Login</Link>
+                        <Link className='login-link' to='/login'>Already have an account? Login</Link>
                     </div>
                 </section>
             </main>

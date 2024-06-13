@@ -61,10 +61,27 @@ async function main() {
         }
     });
 
-    app.get('/api/v1/tournaments', async (req, res) => {
-        const tournaments = await mainDB.collection('tournaments').find().toArray();
-        res.json(tournaments);
-    });
+    app.get('/api/v1/tournaments', authenticateToken, async (req, res) => {
+        const userId = req.user.id;
+    
+        try {
+            const tournaments = await mainDB.collection('tournaments').find().toArray();
+            const tournamentsWithStatus = await Promise.all(tournaments.map(async (tournament) => {
+                const registeredUsers = tournament.registered_users.map(user => user.toString());
+                const isRegistered = registeredUsers.includes(userId);
+
+                return {
+                    ...tournament,
+                    isRegistered
+                };
+            }));
+
+            res.json(tournamentsWithStatus);
+        } catch (error) {
+            console.error('Error fetching tournaments:', error);
+            res.status(500).json({ success: false, message: 'Failed to fetch tournaments' });
+        }
+    });      
 
     app.post('/api/v1/tournaments/:id/register', authenticateToken, async (req, res) => {
         const tournamentId = req.params.id;

@@ -293,3 +293,10 @@
     color: #ECECEC;
     font-size: 16px;
 }
+
+.login-link {
+    text-align: center;
+    margin-top: 10px;
+    color: #5040FF;
+    text-decoration: none;
+}

@@ -50,7 +50,7 @@ function Login() {
             <Fancyinput type='email' placeholder='Email*' value={email} onChange={handleEmail} />
             <Fancyinput type='password' placeholder='Password*' value={password} onChange={handlePassword} />
             <Fancybutton text='Login' onClick={login} disabled={loading} />
-            <Link to='/register'>Don't have an account? Register</Link>
+            <Link className='login-link' to='/register'>Don't have an account? Register</Link>
           </div>
         </section>
       </main>

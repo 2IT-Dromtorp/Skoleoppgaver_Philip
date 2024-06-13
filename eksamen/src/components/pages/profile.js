@@ -93,6 +93,56 @@ function Profile() {
     }
   };
 
+  const handleTournamentToggle = async (tournamentId, isRegistered) => {
+    const token = localStorage.getItem('token');
+    if (!token || !userInfo) return;
+
+    const endpoint = isRegistered
+      ? `/api/v1/tournaments/${tournamentId}/unregister`
+      : `/api/v1/tournaments/${tournamentId}/register`;
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to ${isRegistered ? 'unregister from' : 'register for'} tournament`);
+      }
+
+      const updatedTournaments = await fetchRegisteredTournaments();
+      setRegisteredTournaments(updatedTournaments);
+      console.log(`Successfully ${isRegistered ? 'unregistered from' : 'registered for'} tournament`);
+    } catch (error) {
+      console.error(`Error ${isRegistered ? 'unregistering from' : 'registering for'} tournament:`, error);
+    }
+  };
+
+  const fetchRegisteredTournaments = async () => {
+    const token = localStorage.getItem('token');
+    if (!token || !userInfo) return;
+
+    try {
+      const response = await fetch('/api/v1/registered-tournaments', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch tournaments');
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching tournaments:', error);
+      return [];
+    }
+  };
+
   return (
     <div className='profile-page-wrapper'>
       <div className='profile-info-wrapper'>
@@ -116,9 +166,21 @@ function Profile() {
         )}
       </div>
       <div className='profile-tournaments-wrapper'>
+        <h1 className='title'>Your tournaments</h1>
         <ul className='tournament-list'>
           {registeredTournaments.map(tournament => (
-            <TournamentCell key={tournament._id} tournament={tournament} name={tournament.name} description={tournament.description} format={tournament.format} timestamp={tournament.timestamp} src={tournament.artwork} dates={`${tournament.start_date} - ${tournament.end_date}`} />
+            <TournamentCell
+              key={tournament._id}
+              name={tournament.name}
+              description={tournament.description}
+              format={tournament.format}
+              timestamp={tournament.timestamp}
+              src={tournament.artwork}
+              dates={`${tournament.start_date} - ${tournament.end_date}`}
+              sport={tournament.sport}
+              isRegistered={registeredTournaments.some(t => t._id === tournament._id)}
+              onToggle={() => handleTournamentToggle(tournament._id, registeredTournaments.some(t => t._id === tournament._id))}
+            />
           ))}
         </ul>
       </div>
@@ -138,5 +200,5 @@ const Sportbox = ({ sport, isSignedUp, onToggle }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
