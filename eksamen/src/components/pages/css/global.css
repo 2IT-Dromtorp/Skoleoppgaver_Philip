@@ -6,6 +6,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+* {
+    scrollbar-width: none;
+}
+
 .globalnav-flex {
     display: flex;
 }
@@ -29,6 +33,7 @@
 }
 
 .globalnav-profile {
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -55,44 +60,75 @@
 
 .align-flex {
     display: flex;
+    height: 100%;
+    flex-direction: row;
     align-items: center;
-}
-
-.align-flex-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 8px 0 0;
+    margin-right: 8px;
+    gap: 4px;
 }
 
 .rounded-flex {
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 40px;
+    align-items: center;
     width: 40px;
+    height: 40px;
     border-radius: 9999px;
-    cursor: pointer;
 }
 
 .rounded-flex:hover {
     background: #ECECEC10;
 }
 
-.rounded {
-    height: 32px;
+.rounded-i {
     width: 32px;
+    height: 32px;
     border-radius: 9999px;
 }
 
-.logout-button {
-    border: none;
-    background: none;
+.profile-flex {
+    position: relative;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.profile-name {
+    display: flex;
+    height: 100%;
+    align-items: center;
     color: #ECECEC;
     cursor: pointer;
-    padding: 0;
-    margin-left: 4px;
-    font-size: 16px;
+}
+
+.hidden-button-wrapper {
+    display: flex;
+    width: 100%;
+    background: #212121;
+    top: 100%;
+    position: absolute;
+    display: none;
+}
+
+.hidden-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex: 1;
+    color: #ECECEC;
+}
+
+.hidden-button:hover {
+    background: #ECECEC10;
+}
+
+.profile-flex:hover .hidden-button-wrapper {
+    display: block;
 }
 
 /* login */
@@ -137,23 +173,6 @@
     padding-bottom: 80px;
 }
 
-.login-button {
-    width: 100%;
-    padding: 1em;
-    margin-top: 1em;
-    border: none;
-    border-radius: 6px;
-    background-color: #007BFF;
-    color: white;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.login-button:hover {
-    background-color: #0056b3;
-}
-
 /* profile */
 
 .profile-page-wrapper {
@@ -181,4 +200,96 @@
     flex: 1;
     flex-direction: column;
     padding: 0 80px;
+}
+
+/* tournaments */
+
+.tournament-cell-wrapper {
+    display: flex;
+    width: fit-content;
+}
+
+.tournament-cell-content {
+    width: 220px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cell-image-wrapper {
+    position: relative;
+    display: flex;
+}
+
+.cell-image {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+}
+
+.cell-tournament-title {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    color: #ECECEC;
+    font-size: 20px;
+}
+
+.cell-body {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 8px;
+    background: #ECECEC;
+}
+
+.cell-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.tournament-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    padding: 1em;
+    margin: 0;
+}
+
+.profile-sports-flex {
+    padding: 1em;
+    background: #212121;
+    border-radius: 8px;
+    display: flex;
+}
+
+.sports-container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+.sportbox-flex {
+    display: flex;
+}
+
+.sportbox-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.sportbox-text {
+    text-align: center;
+    color: #ECECEC;
+    font-size: 16px;
 }

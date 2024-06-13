@@ -36,8 +36,9 @@ const Navbar = ({ buttons = [] }) => {
 
     const logout = () => {
         localStorage.removeItem('token');
+        setUser(null);
         navigate('/');
-        checkUser(); // Call checkUser here to update user state after logout
+        checkUser();
     };
 
     return (
@@ -51,13 +52,16 @@ const Navbar = ({ buttons = [] }) => {
                 <ul className='globalnav-profile'>
                     {user ? (
                         <div className='align-flex'>
-                            <Link draggable='false' to={`/profile/${user.id}`}>
+                            <Link to={`/profile/${user.id}`}>
                                 <div className='rounded-flex'>
-                                    <img draggable='false' alt='User' className='rounded' src={user.profile_picture} />
+                                    <img className='rounded-i' src={user.profile_picture} />
                                 </div>
                             </Link>
-                            <div className='align-flex-button'>
-                                <button className='logout-button' onClick={logout}>Logout</button>
+                            <div className='profile-flex'>
+                                <span className='profile-name'>{user.name}</span>
+                                <div className='hidden-button-wrapper'>
+                                    <button className='hidden-button' onClick={logout}>Logout</button>
+                                </div>
                             </div>
                         </div>
                     ) : (

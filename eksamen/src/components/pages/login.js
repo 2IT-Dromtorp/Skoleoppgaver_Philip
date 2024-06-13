@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Fancyinput from '../fancyinput/fancyinput';
 import Fancybutton from '../fancybutton/fancybutton';
 
@@ -50,6 +50,7 @@ function Login() {
             <Fancyinput type='email' placeholder='Email*' value={email} onChange={handleEmail} />
             <Fancyinput type='password' placeholder='Password*' value={password} onChange={handlePassword} />
             <Fancybutton text='Login' onClick={login} disabled={loading} />
+            <Link to='/register'>Don't have an account? Register</Link>
           </div>
         </section>
       </main>
