@@ -152,7 +152,7 @@ function Profile() {
             <img draggable='false' className='profile-picture' src={userInfo.profile_picture} alt='Profile' />
             <div className='profile-sports-flex'>
               <ul className='sports-container'>
-                {['Football', 'Volleyball', 'Basketball'].map(sport => (
+                {['Football', 'Volleyball', 'Basketball', 'Håndball'].map(sport => (
                   <Sportbox
                     key={sport}
                     sport={sport}

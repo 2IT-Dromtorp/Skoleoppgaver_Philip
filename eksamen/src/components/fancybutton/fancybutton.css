@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     height: 52px;
-    width: 320px;
+    flex: 1;
     border: none;
     cursor: pointer;
     border-radius: 6px;

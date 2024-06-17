@@ -31,7 +31,7 @@ async function main() {
     const usersCol = mainDB.collection('users');
 
     app.post('/api/v1/register', async (req, res) => {
-        const { name, email, password, confirmPassword } = req.body;
+        const { name, email, phoneNumber, password, confirmPassword } = req.body;
         console.log(req.body);
 
         if (password !== confirmPassword) {
@@ -45,7 +45,7 @@ async function main() {
             return;
         }
 
-        const result = await usersCol.insertOne({ name, email, password, profile_picture: 'https://cdn.auth0.com/avatars/u.png', sport: [] });
+        const result = await usersCol.insertOne({ name, email, phoneNumber, password, profile_picture: 'https://cdn.auth0.com/avatars/u.png', sport: [] });
         res.json({ success: true, result });
     });
 

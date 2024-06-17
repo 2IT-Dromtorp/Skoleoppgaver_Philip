@@ -6,6 +6,7 @@ import Fancybutton from '../fancybutton/fancybutton';
 function Registration() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -16,13 +17,14 @@ function Registration() {
     const handleEmail = (e) => setEmail(e.target.value);
     const handlePassword = (e) => setPassword(e.target.value);
     const handleConfirmPassword = (e) => setConfirmPassword(e.target.value);
+    const handlePhoneNumber = (e) => setPhoneNumber(e.target.value)
 
     const register = () => {
-        const body = { name, email, password, confirmPassword };
+        const body = { name, email, phoneNumber, password, confirmPassword };
 
         console.log(body)
 
-        fetch('http://localhost:8080/api/v1/register', {
+        fetch('/api/v1/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body)
@@ -53,6 +55,7 @@ function Registration() {
                     <div className='login-container'>
                         <Fancyinput type='text' placeholder='Name*' value={name} onChange={handleName} />
                         <Fancyinput type='email' placeholder='Email*' value={email} onChange={handleEmail} />
+                        <Fancyinput type='tel' placeholder='Phone Number' value={phoneNumber} onChange={handlePhoneNumber} />
                         <Fancyinput type='password' placeholder='Password*' value={password} onChange={handlePassword} />
                         <Fancyinput type='password' placeholder='Confirm Password*' value={confirmPassword} onChange={handleConfirmPassword} />
                         <Fancybutton text='Register' onClick={register} disabled={loading} />
